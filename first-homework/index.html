@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>TV show ratings -- first homework</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<main id="main-app">
+			<section id="show-app">
+				<h1 id="app-header">TV SHOW APP</h1>
+				<section id="show-information">
+					<article>
+						<h3>Star Trek Deep Space 9</h3>
+						<p>
+							Star Trek: Deep Space Nine (DS9) is an American science fiction television series created by Rick Berman
+							and Michael Piller. It originally aired from January 1993 to June 1999, in syndication, spanning 176
+							episodes over seven seasons. The fourth series in the Star Trek franchise, it served as the third sequel
+							to Star Trek: The Original Series. Set in the 24th century, when Earth is part of a United Federation of
+							Planets, its narrative is centered on the eponymous space station Deep Space Nine, located adjacent to a
+							wormhole connecting Federation territory to the Gamma Quadrant on the far side of the Milky Way galaxy.
+						</p>
+					</article>
+					<img src="./images/image.jpg" alt="show image" />
+				</section>
+			</section>
+			<section id="user-input">
+				<h3>Reviews</h3>
+				<form id="review-form">
+					<textarea id="review-textarea" name="show-review" placeholder="Write your opinion"></textarea>
+					<article>
+						<label for="show-rating">Rating</label>
+						<input name="show-rating" type="text" placeholder="3" />
+						<button type="submit">Post</button>
+					</article>
+				</form>
+			</section>
+			<section id="review">
+				<ul id="review-items"></ul>
+			</section>
+		</main>
+		<script src="index.js"></script>
+	</body>
+</html>
