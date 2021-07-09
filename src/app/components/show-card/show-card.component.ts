@@ -8,6 +8,6 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 })
 export class ShowCardComponent {
 	@Input() title: string;
-	@Input() rating: number;
+	@Input() rating: Array<number>;
 	@Input() imgUrl: string;
 }

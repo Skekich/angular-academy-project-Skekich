@@ -3,7 +3,10 @@
 	<article>
 		<h2>{{ title }}</h2>
 		<p>
-			Average Rating <span>{{ rating }}</span>
+			Average Rating
+			<span>
+				<app-rating [rating]="rating"></app-rating>
+			</span>
 		</p>
 	</article>
 </mat-card>
