@@ -1,0 +1,55 @@
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Show } from 'src/app/services/show.model';
+
+@Component({
+	selector: 'app-all-shows-container',
+	templateUrl: './all-shows-container.component.html',
+	styleUrls: ['./all-shows-container.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AllShowsContainerComponent implements OnInit {
+	rawShowsData: Array<any> = [
+		{
+			title: 'The Expanse',
+			description: 'This is a show!',
+			rating: [4, 5, 5, 4],
+			imgUrl: '../assets/images/expanse.jpg',
+		},
+		{
+			title: 'Star Trek',
+			description: 'This is a show!',
+			rating: [5, 5, 5, 4],
+			imgUrl: '../assets/images/star_trek.jpg',
+		},
+		{
+			title: 'Battlestar Galactica',
+			description: 'This is a show!',
+			rating: [4, 4, 5, 4],
+			imgUrl: '../assets/images/bsg.jpg',
+		},
+		{
+			title: 'X Files',
+			description: 'This is a show!',
+			rating: [5, 4, 5, 4],
+			imgUrl: '../assets/images/x_files.jpg',
+		},
+		{
+			title: 'The Clone wars',
+			description: 'This is a show!',
+			rating: [3, 4, 5, 4],
+			imgUrl: '../assets/images/clone_wars.jpg',
+		},
+	];
+
+	shows: Array<Show>;
+
+	ngOnInit() {
+		this.shows = this.rawShowsData.map((element) => {
+			return new Show(element);
+		});
+
+		this.shows.forEach((element) => {
+			console.log(element.CalculateAverage());
+		});
+	}
+}
