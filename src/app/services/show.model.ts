@@ -4,16 +4,16 @@ export class Show {
 	constructor(elementData: IShows) {
 		this.title = elementData.title;
 		this.description = elementData.description;
-		this.rating = elementData.rating;
-		this.imgUrl = elementData.imgUrl;
+		this.average_rating = elementData.average_rating;
+		this.image_url = elementData.image_url;
 	}
 
 	title: string;
 	description: string;
-	rating: Array<number>;
-	imgUrl: string;
+	average_rating: Array<number>;
+	image_url: string;
 
 	CalculateAverage() {
-		return this.rating.reduce((total, rating) => total + rating, 0) / this.rating.length;
+		return this.average_rating.reduce((total, rating) => total + rating, 0) / this.average_rating.length + ' %';
 	}
 }

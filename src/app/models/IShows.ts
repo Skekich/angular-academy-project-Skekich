@@ -1,6 +1,6 @@
 export interface IShows {
 	title: string;
 	description: string;
-	rating: Array<number>;
-	imgUrl: string;
+	average_rating: Array<number>;
+	image_url: string;
 }

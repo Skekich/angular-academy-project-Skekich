@@ -12,7 +12,7 @@ export class ShowCardComponent {
 	@Input() rating: Array<number>;
 	@Input() imgUrl: string;
 
-	showTitle(event?: MouseEvent) {
+	showTitle() {
 		console.log(this.title);
 	}
 }

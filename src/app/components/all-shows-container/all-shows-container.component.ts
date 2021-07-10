@@ -13,32 +13,32 @@ export class AllShowsContainerComponent implements OnInit {
 		{
 			title: 'The Expanse',
 			description: 'This is a show!',
-			rating: [4, 5, 5, 4],
-			imgUrl: '../assets/images/expanse.jpg',
+			average_rating: [4, 5, 5, 4],
+			image_url: '../assets/images/expanse.jpg',
 		},
 		{
 			title: 'Star Trek',
 			description: 'This is a show!',
-			rating: [5, 5, 5, 4],
-			imgUrl: '../assets/images/star_trek.jpg',
+			average_rating: [5, 5, 5, 4],
+			image_url: '../assets/images/star_trek.jpg',
 		},
 		{
 			title: 'Battlestar Galactica',
 			description: 'This is a show!',
-			rating: [4, 4, 5, 4],
-			imgUrl: '../assets/images/bsg.jpg',
+			average_rating: [4, 4, 5, 4],
+			image_url: '../assets/images/bsg.jpg',
 		},
 		{
 			title: 'X Files',
 			description: 'This is a show!',
-			rating: [5, 4, 5, 4],
-			imgUrl: '../assets/images/x_files.jpg',
+			average_rating: [5, 4, 5, 4],
+			image_url: '../assets/images/x_files.jpg',
 		},
 		{
 			title: 'The Clone wars',
 			description: 'This is a show!',
-			rating: [3, 4, 5, 4],
-			imgUrl: '../assets/images/clone_wars.jpg',
+			average_rating: [3, 4, 5, 4],
+			image_url: '../assets/images/clone_wars.jpg',
 		},
 	];
 
