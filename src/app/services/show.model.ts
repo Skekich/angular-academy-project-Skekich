@@ -1,5 +1,7 @@
+import { IShows } from '../models/IShows';
+
 export class Show {
-	constructor(elementData: any) {
+	constructor(elementData: IShows) {
 		this.title = elementData.title;
 		this.description = elementData.description;
 		this.rating = elementData.rating;

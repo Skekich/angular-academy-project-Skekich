@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { IShows } from 'src/app/models/IShows';
 import { Show } from 'src/app/services/show.model';
 
 @Component({
@@ -8,7 +9,7 @@ import { Show } from 'src/app/services/show.model';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllShowsContainerComponent implements OnInit {
-	rawShowsData: Array<any> = [
+	rawShowsData: Array<IShows> = [
 		{
 			title: 'The Expanse',
 			description: 'This is a show!',
