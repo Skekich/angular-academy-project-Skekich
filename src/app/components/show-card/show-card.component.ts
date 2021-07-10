@@ -11,4 +11,8 @@ export class ShowCardComponent {
 	@Input() description: string;
 	@Input() rating: Array<number>;
 	@Input() imgUrl: string;
+
+	showTitle(event?: MouseEvent) {
+		console.log(this.title);
+	}
 }
