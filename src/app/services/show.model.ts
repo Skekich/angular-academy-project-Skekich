@@ -1,19 +1,19 @@
-import { IShows } from '../models/IShows';
+import { IShow } from '../models/IShow';
 
 export class Show {
-	constructor(elementData: IShows) {
+	constructor(elementData: IShow) {
 		this.title = elementData.title;
 		this.description = elementData.description;
-		this.average_rating = elementData.average_rating;
-		this.image_url = elementData.image_url;
+		this.averageRating = elementData.average_rating;
+		this.imageUrl = elementData.image_url;
 	}
 
 	title: string;
 	description: string;
-	average_rating: Array<number>;
-	image_url: string;
+	averageRating: number;
+	imageUrl: string;
 
-	CalculateAverage() {
-		return this.average_rating.reduce((total, rating) => total + rating, 0) / this.average_rating.length + ' %';
+	ShowAverage() {
+		console.log(this.averageRating + ' %');
 	}
 }

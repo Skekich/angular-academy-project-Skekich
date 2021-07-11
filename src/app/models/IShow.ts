@@ -1,6 +1,6 @@
-export interface IShows {
+export interface IShow {
 	title: string;
 	description: string;
-	average_rating: Array<number>;
+	average_rating: number;
 	image_url: string;
 }

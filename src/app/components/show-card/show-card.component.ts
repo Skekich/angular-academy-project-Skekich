@@ -9,7 +9,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 export class ShowCardComponent {
 	@Input() title: string;
 	@Input() description: string;
-	@Input() rating: Array<number>;
+	@Input() rating: number;
 	@Input() imgUrl: string;
 
 	showTitle() {
