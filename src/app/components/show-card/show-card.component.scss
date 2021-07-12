@@ -1,0 +1,28 @@
+:host {
+	display: inline-flex;
+}
+
+article {
+	margin: 0px 10px;
+}
+
+.show-card {
+	padding: 0;
+	margin: 16px;
+	border-radius: 24px;
+	overflow: hidden;
+	width: 240px;
+}
+
+img {
+	width: 240px;
+	height: 300px;
+	object-fit: cover;
+}
+
+.show-rating {
+	display: flex;
+	justify-content: flex-start;
+	align-items: baseline;
+	flex-flow: row nowrap;
+}
