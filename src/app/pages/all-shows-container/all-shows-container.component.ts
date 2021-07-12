@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { IShow } from 'src/app/models/IShow';
+import { IShow } from 'src/app/interfaces/show.interface';
 import { Show } from 'src/app/services/show.model';
 
 @Component({

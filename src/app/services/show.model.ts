@@ -1,4 +1,4 @@
-import { IShow } from '../models/IShow';
+import { IShow } from '../interfaces/show.interface';
 
 export class Show {
 	constructor(elementData: IShow) {

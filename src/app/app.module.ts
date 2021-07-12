@@ -10,9 +10,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowCardComponent } from './components/show-card/show-card.component';
 import { ShowListComponent } from './components/show-list/show-list.component';
 import { RatingComponent } from './components/rating/rating.component';
-import { AllShowsContainerComponent } from './components/all-shows-container/all-shows-container.component';
+import { AllShowsContainerComponent } from './pages/all-shows-container/all-shows-container.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
 	declarations: [
@@ -24,7 +25,7 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 		SidenavComponent,
 		MainLayoutComponent,
 	],
-	imports: [BrowserModule, BrowserAnimationsModule, MatCardModule, MatIconModule, MatSidenavModule, MatButtonModule],
+	imports: [BrowserModule, BrowserAnimationsModule, MatCardModule, MatIconModule, MatSidenavModule, MatButtonModule, AppRoutingModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
