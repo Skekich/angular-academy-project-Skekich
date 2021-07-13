@@ -1,7 +1,11 @@
+:host {
+	display: inline-flex;
+	height: 100%;
+}
+
 .show-card {
 	display: flex;
 	flex-flow: row nowrap;
-	margin: 10px 10px;
 }
 
 img {
@@ -13,8 +17,9 @@ img {
 .show-information {
 	display: flex;
 	justify-content: space-between;
+	flex-flow: row nowrap;
 	margin: 0;
-	padding: 5px 5px;
+	padding: 10px 5px;
 }
 
 .show-rating {
@@ -31,6 +36,14 @@ h2 {
 	display: block;
 	text-align: center;
 	margin: 5px 5px;
+}
+
+img {
+	border-radius: 20px;
+}
+
+article {
+	padding: 10px 10px;
 }
 
 @media only screen and (max-width: 800px) {

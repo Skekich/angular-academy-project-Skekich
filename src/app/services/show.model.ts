@@ -15,7 +15,7 @@ export class Show {
 	imageUrl: string;
 	id: string;
 
-	ShowAverage() {
+	public ShowAverage() {
 		console.log(this.averageRating + ' %');
 	}
 }

@@ -50,7 +50,7 @@ export class ShowService {
 	];
 
 	public getShows(): Array<Show> {
-		return this.rawShowsData.map((showData) => {
+		return this.rawShowsData.map((showData: IShow) => {
 			return new Show(showData);
 		});
 	}
