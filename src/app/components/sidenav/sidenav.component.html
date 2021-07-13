@@ -1,13 +1,9 @@
-<div class="app-sidenav">
+<div class="sidenav">
 	<ul>
-		<li>
-			<a mat-button href="#">All shows</a>
-		</li>
-		<li>
-			<a mat-button href="#">Top rated</a>
-		</li>
-		<li>
-			<a mat-button href="#">My profile</a>
+		<li *ngFor="let link of links">
+			<a mat-button [routerLink]="link.url" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{
+				link.title
+			}}</a>
 		</li>
 	</ul>
 </div>

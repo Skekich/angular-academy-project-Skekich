@@ -14,6 +14,7 @@ import { AllShowsContainerComponent } from './pages/all-shows-container/all-show
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TopRatedShowsComponent } from './pages/top-rated-shows/top-rated-shows.component';
 
 @NgModule({
 	declarations: [
@@ -24,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 		AllShowsContainerComponent,
 		SidenavComponent,
 		MainLayoutComponent,
+  TopRatedShowsComponent,
 	],
 	imports: [BrowserModule, BrowserAnimationsModule, MatCardModule, MatIconModule, MatSidenavModule, MatButtonModule, AppRoutingModule],
 	providers: [],
