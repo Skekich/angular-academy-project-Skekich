@@ -35,7 +35,7 @@ export class ShowService {
 			title: 'X Files',
 			description:
 				'Conspiracy theorist Fox Mulder and realist Dana Scully pull out all the stops as FBI special agents to investigate and get to the bottom of inexplicable paranormal cases.',
-			average_rating: 4.3,
+			average_rating: 3.9,
 			image_url: '../assets/images/x_files.jpg',
 			id: '4',
 		},
@@ -43,19 +43,23 @@ export class ShowService {
 			title: 'The Clone wars',
 			description:
 				'As multiple star systems get involved in the Clone Wars, the Jedi Knights struggle to keep the peace and defeat the droid army of the Separatists. Meanwhile, an old threat slowly reveals its presence.',
-			average_rating: 4.3,
+			average_rating: 3.8,
 			image_url: '../assets/images/clone_wars.jpg',
 			id: '5',
 		},
 	];
 
-	getShows(): Array<Show> {
+	public getShows(): Array<Show> {
 		return this.rawShowsData.map((showData) => {
 			return new Show(showData);
 		});
 	}
 
-	getTopRated(): Array<Show> {
-		return this.getShows().filter((show: Show) => show.averageRating > 4.5);
+	public getTopRated(): Array<Show> {
+		return this.getShows().filter((show: Show) => show.averageRating > 4);
+	}
+
+	public getShow(id: string): Show | undefined {
+		return this.getShows().find((show: Show) => show.id === id);
 	}
 }

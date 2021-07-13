@@ -15,6 +15,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TopRatedShowsComponent } from './pages/top-rated-shows/top-rated-shows.component';
+import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
+import { ShowDetailComponent } from './pages/show-details-container/components/show-detail/show-detail.component';
 
 @NgModule({
 	declarations: [
@@ -25,9 +27,19 @@ import { TopRatedShowsComponent } from './pages/top-rated-shows/top-rated-shows.
 		AllShowsContainerComponent,
 		SidenavComponent,
 		MainLayoutComponent,
-  TopRatedShowsComponent,
+		TopRatedShowsComponent,
+		ShowDetailsContainerComponent,
+		ShowDetailComponent,
 	],
-	imports: [BrowserModule, BrowserAnimationsModule, MatCardModule, MatIconModule, MatSidenavModule, MatButtonModule, AppRoutingModule],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MatCardModule,
+		MatIconModule,
+		MatSidenavModule,
+		MatButtonModule,
+		AppRoutingModule,
+	],
 	providers: [],
 	bootstrap: [AppComponent],
 })
