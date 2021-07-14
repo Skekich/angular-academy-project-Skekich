@@ -6,7 +6,7 @@ import { Show } from './show.model';
 	providedIn: 'root',
 })
 export class ShowService {
-	public rawShowsData: Array<IShow> = [
+	private rawShowsData: Array<IShow> = [
 		{
 			title: 'The Expanse',
 			description:
