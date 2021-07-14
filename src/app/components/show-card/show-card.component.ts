@@ -12,7 +12,7 @@ export class ShowCardComponent {
 	@Input() rating: number;
 	@Input() imgUrl: string;
 
-	showTitle() {
+	public showTitle(): void {
 		console.log(this.title);
 	}
 }

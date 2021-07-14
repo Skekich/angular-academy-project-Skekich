@@ -1,0 +1,53 @@
+:host {
+	display: inline-flex;
+	height: 100%;
+}
+
+.show-card {
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+img {
+	width: 400px;
+	height: auto;
+	object-fit: cover;
+}
+
+.show-information {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row nowrap;
+	margin: 0;
+	padding: 10px 5px;
+}
+
+.show-rating {
+	display: flex;
+	justify-content: flex-start;
+}
+
+h2 {
+	text-overflow: ellipsis;
+	max-width: 50%;
+}
+
+.show-description {
+	display: block;
+	text-align: center;
+	margin: 5px 5px;
+}
+
+img {
+	border-radius: 20px;
+}
+
+article {
+	padding: 10px 10px;
+}
+
+@media only screen and (max-width: 800px) {
+	.show-card {
+		flex-flow: row wrap;
+	}
+}
