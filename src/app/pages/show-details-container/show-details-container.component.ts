@@ -2,14 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { ITemplateDetailsData } from 'src/app/interfaces/templateDetailsData.interface';
 import { Review } from 'src/app/services/review.model';
 import { Show } from 'src/app/services/show.model';
 import { ShowService } from 'src/app/services/show.service';
-
-interface ITemplateDetailsData {
-	showDetails: Show | null;
-	reviews: Array<Review> | null;
-}
 
 @Component({
 	selector: 'app-show-details-container',
@@ -18,7 +14,7 @@ interface ITemplateDetailsData {
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowDetailsContainerComponent {
-	public show$: Observable<Show | null> = this.route.paramMap.pipe(
+	private show$: Observable<Show | null> = this.route.paramMap.pipe(
 		switchMap((paramMap) => {
 			const id: string | null = paramMap.get('id');
 			if (id) {
@@ -27,7 +23,7 @@ export class ShowDetailsContainerComponent {
 			return of(null);
 		})
 	);
-	public review$: Observable<Array<Review> | null> = this.route.paramMap.pipe(
+	private review$: Observable<Array<Review> | null> = this.route.paramMap.pipe(
 		switchMap((paramMap) => {
 			const id: string | null = paramMap.get('id');
 			if (id) {
