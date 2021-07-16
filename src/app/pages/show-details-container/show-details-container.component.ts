@@ -1,7 +1,15 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { combineLatest, Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { Review } from 'src/app/services/review.model';
 import { Show } from 'src/app/services/show.model';
 import { ShowService } from 'src/app/services/show.service';
+
+interface ITemplateDetailsData {
+	showDetails: Show | null;
+	reviews: Array<Review> | null;
+}
 
 @Component({
 	selector: 'app-show-details-container',
@@ -9,15 +17,34 @@ import { ShowService } from 'src/app/services/show.service';
 	styleUrls: ['./show-details-container.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShowDetailsContainerComponent implements OnInit {
-	public show: Show | undefined;
+export class ShowDetailsContainerComponent {
+	public show$: Observable<Show | null> = this.route.paramMap.pipe(
+		switchMap((paramMap) => {
+			const id: string | null = paramMap.get('id');
+			if (id) {
+				return this.showService.getShow(id);
+			}
+			return of(null);
+		})
+	);
+	public review$: Observable<Array<Review> | null> = this.route.paramMap.pipe(
+		switchMap((paramMap) => {
+			const id: string | null = paramMap.get('id');
+			if (id) {
+				return this.showService.getSelectedShowReviews(id);
+			}
+			return of(null);
+		})
+	);
+
+	public showDetailsData$: Observable<ITemplateDetailsData> = combineLatest([this.show$, this.review$]).pipe(
+		map(([showDetails, reviews]) => {
+			return {
+				showDetails,
+				reviews,
+			};
+		})
+	);
 
 	constructor(private route: ActivatedRoute, private showService: ShowService) {}
-
-	ngOnInit(): void {
-		const id: string | null = this.route.snapshot.paramMap.get('id');
-		if (id) {
-			this.show = this.showService.getShow(id);
-		}
-	}
 }

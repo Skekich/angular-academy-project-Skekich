@@ -11,8 +11,4 @@ export class ShowCardComponent {
 	@Input() description: string;
 	@Input() rating: number;
 	@Input() imgUrl: string;
-
-	public showTitle(): void {
-		console.log(this.title);
-	}
 }

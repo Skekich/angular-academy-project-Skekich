@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Show } from 'src/app/services/show.model';
 import { ShowService } from 'src/app/services/show.service';
 
@@ -8,16 +9,7 @@ import { ShowService } from 'src/app/services/show.service';
 	styleUrls: ['./all-shows-container.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AllShowsContainerComponent implements OnInit {
-	public shows: Array<Show>;
-
+export class AllShowsContainerComponent {
+	public shows$: Observable<Array<Show>> = this.showService.getShows();
 	constructor(private showService: ShowService) {}
-
-	ngOnInit() {
-		this.shows = this.showService.getShows();
-
-		this.shows.forEach((element) => {
-			element.ShowAverage();
-		});
-	}
 }

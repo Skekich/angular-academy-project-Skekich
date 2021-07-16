@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { delay, map } from 'rxjs/operators';
 import { IReview } from '../interfaces/review.interface';
 import { IShow } from '../interfaces/show.interface';
 import { Review } from './review.model';
@@ -69,27 +71,38 @@ export class ShowService {
 		},
 	];
 
-	public getShows(): Array<Show> {
+	private get shows(): Array<Show> {
 		return this.rawShowsData.map((showData: IShow) => {
 			return new Show(showData);
 		});
 	}
 
-	public getAllReviews(): Array<Review> {
+	private get reviews(): Array<Review> {
 		return this.rawReviewData.map((showRating: IReview) => {
 			return new Review(showRating);
 		});
 	}
 
-	public getTopRated(): Array<Show> {
-		return this.getShows().filter((show: Show) => show.averageRating > 4);
+	public getShows(): Observable<Array<Show>> {
+		return of(this.shows);
 	}
 
-	public getSelectedShowReviews(id: string): Array<Review> {
-		return this.getAllReviews().filter((element: Review) => element.id === id);
+	public getAllReviews(): Observable<Array<Review>> {
+		return of(this.reviews);
 	}
 
-	public getShow(id: string): Show | undefined {
-		return this.getShows().find((show: Show) => show.id === id);
+	public getTopRated(): Observable<Array<Show>> {
+		return this.getShows().pipe(
+			map((shows) => shows.filter((show: Show) => show.averageRating > 4)) /* ,
+			delay(1000 + Math.random() * 1000) */
+		);
+	}
+
+	public getSelectedShowReviews(id: string): Observable<Array<Review> | null> {
+		return this.getAllReviews().pipe(map((reviews) => reviews.filter((review: Review) => review.id == id) || null));
+	}
+
+	public getShow(id: string): Observable<Show | null> {
+		return this.getShows().pipe(map((shows) => shows.find((show: Show) => show.id === id) || null));
 	}
 }

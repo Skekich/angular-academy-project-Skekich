@@ -8,5 +8,5 @@ import { Show } from 'src/app/services/show.model';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowDetailComponent {
-	@Input() show: Show;
+	@Input() show: Show | null;
 }
