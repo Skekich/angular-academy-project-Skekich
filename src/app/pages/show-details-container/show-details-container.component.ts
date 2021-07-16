@@ -16,7 +16,6 @@ export class ShowDetailsContainerComponent implements OnInit {
 
 	ngOnInit(): void {
 		const id: string | null = this.route.snapshot.paramMap.get('id');
-
 		if (id) {
 			this.show = this.showService.getShow(id);
 		}

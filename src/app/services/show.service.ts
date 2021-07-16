@@ -1,11 +1,31 @@
 import { Injectable } from '@angular/core';
+import { IReview } from '../interfaces/review.interface';
 import { IShow } from '../interfaces/show.interface';
+import { Review } from './review.model';
 import { Show } from './show.model';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ShowService {
+	private rawReviewData: Array<IReview> = [
+		{
+			id: '1',
+			rating: '1',
+			comment: 'This is best show ever',
+		},
+		{
+			id: '1',
+			rating: '1',
+			comment: 'This is best show ever',
+		},
+		{
+			id: '2',
+			rating: '1',
+			comment: 'This is best show ever',
+		},
+	];
+
 	private rawShowsData: Array<IShow> = [
 		{
 			title: 'The Expanse',
@@ -55,8 +75,18 @@ export class ShowService {
 		});
 	}
 
+	public getAllReviews(): Array<Review> {
+		return this.rawReviewData.map((showRating: IReview) => {
+			return new Review(showRating);
+		});
+	}
+
 	public getTopRated(): Array<Show> {
 		return this.getShows().filter((show: Show) => show.averageRating > 4);
+	}
+
+	public getSelectedShowReviews(id: string): Array<Review> {
+		return this.getAllReviews().filter((element: Review) => element.id === id);
 	}
 
 	public getShow(id: string): Show | undefined {
