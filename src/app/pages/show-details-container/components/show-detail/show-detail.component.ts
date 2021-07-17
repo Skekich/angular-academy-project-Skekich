@@ -11,4 +11,5 @@ import { Show } from 'src/app/services/show.model';
 export class ShowDetailComponent {
 	@Input() show: Show | null;
 	@Input() reviews: Array<Review> | null;
+	@Input() isLoading: boolean;
 }

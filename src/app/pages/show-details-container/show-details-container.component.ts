@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable, of } from 'rxjs';
-import { delay, map, switchMap } from 'rxjs/operators';
+import { delay, finalize, map, switchMap } from 'rxjs/operators';
 import { ITemplateDetailsData } from 'src/app/interfaces/templateDetailsData.interface';
 import { Review } from 'src/app/services/review.model';
 import { Show } from 'src/app/services/show.model';
@@ -40,7 +40,8 @@ export class ShowDetailsContainerComponent {
 				reviews,
 			};
 		}),
-		delay(1000 + Math.random() * 1000)
+		delay(1000 + Math.random() * 1000),
+		finalize(() => {})
 	);
 
 	constructor(private route: ActivatedRoute, private showService: ShowService) {}

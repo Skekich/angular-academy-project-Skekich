@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +20,7 @@ import { ShowDetailsContainerComponent } from './pages/show-details-container/sh
 import { ShowDetailComponent } from './pages/show-details-container/components/show-detail/show-detail.component';
 import { ReviewsComponent } from './pages/show-details-container/components/reviews/reviews.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
 	declarations: [
@@ -32,8 +34,9 @@ import { CommentComponent } from './components/comment/comment.component';
 		TopRatedShowsComponent,
 		ShowDetailsContainerComponent,
 		ShowDetailComponent,
-  ReviewsComponent,
-  CommentComponent,
+		ReviewsComponent,
+		CommentComponent,
+		LoadingSpinnerComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -43,6 +46,7 @@ import { CommentComponent } from './components/comment/comment.component';
 		MatSidenavModule,
 		MatButtonModule,
 		AppRoutingModule,
+		MatProgressSpinnerModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
