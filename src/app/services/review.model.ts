@@ -8,6 +8,6 @@ export class Review {
 	}
 
 	public id: string;
-	public rating: string;
+	public rating: number;
 	public comment: string;
 }

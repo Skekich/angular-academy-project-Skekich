@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { TopRatedShowsComponent } from './pages/top-rated-shows/top-rated-shows.component';
 import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
 import { ShowDetailComponent } from './pages/show-details-container/components/show-detail/show-detail.component';
+import { ReviewsComponent } from './pages/show-details-container/components/reviews/reviews.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
 	declarations: [
@@ -30,6 +32,8 @@ import { ShowDetailComponent } from './pages/show-details-container/components/s
 		TopRatedShowsComponent,
 		ShowDetailsContainerComponent,
 		ShowDetailComponent,
+  ReviewsComponent,
+  CommentComponent,
 	],
 	imports: [
 		BrowserModule,

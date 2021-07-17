@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { IReview } from '../interfaces/review.interface';
 import { IShow } from '../interfaces/show.interface';
 import { Review } from './review.model';
@@ -13,17 +13,17 @@ export class ShowService {
 	private rawReviewData: Array<IReview> = [
 		{
 			id: '1',
-			rating: '1',
+			rating: 4,
 			comment: 'This is best show ever',
 		},
 		{
 			id: '1',
-			rating: '1',
+			rating: 3,
 			comment: 'This is best show ever',
 		},
 		{
 			id: '2',
-			rating: '1',
+			rating: 4,
 			comment: 'This is best show ever',
 		},
 	];
@@ -92,10 +92,7 @@ export class ShowService {
 	}
 
 	public getTopRated(): Observable<Array<Show>> {
-		return this.getShows().pipe(
-			map((shows) => shows.filter((show: Show) => show.averageRating > 4)) /* ,
-			delay(1000 + Math.random() * 1000) */
-		);
+		return this.getShows().pipe(map((shows) => shows.filter((show: Show) => show.averageRating > 4)));
 	}
 
 	public getSelectedShowReviews(id: string): Observable<Array<Review> | null> {
