@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, Observable, of } from 'rxjs';
-import { delay, finalize, map, switchMap } from 'rxjs/operators';
+import { combineLatest, Observable, of, throwError } from 'rxjs';
+import { catchError, delay, map, retry, switchMap } from 'rxjs/operators';
 import { ITemplateDetailsData } from 'src/app/interfaces/templateDetailsData.interface';
 import { Review } from 'src/app/services/review.model';
 import { Show } from 'src/app/services/show.model';
@@ -41,7 +41,10 @@ export class ShowDetailsContainerComponent {
 			};
 		}),
 		delay(1000 + Math.random() * 1000),
-		finalize(() => {})
+		retry(1),
+		catchError(() => {
+			return throwError('There was an error while getting data');
+		})
 	);
 
 	constructor(private route: ActivatedRoute, private showService: ShowService) {}
