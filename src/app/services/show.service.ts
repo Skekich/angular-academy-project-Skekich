@@ -1,4 +1,7 @@
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IShow } from '../interfaces/show.interface';
 import { Show } from './show.model';
 
@@ -49,17 +52,28 @@ export class ShowService {
 		},
 	];
 
-	public getShows(): Array<Show> {
+	private get shows(): Array<Show> {
 		return this.rawShowsData.map((showData: IShow) => {
 			return new Show(showData);
 		});
 	}
 
-	public getTopRated(): Array<Show> {
-		return this.getShows().filter((show: Show) => show.averageRating > 4);
+	public getShows(): Observable<Array<Show>> {
+		return of(this.shows);
 	}
 
-	public getShow(id: string): Show | undefined {
-		return this.getShows().find((show: Show) => show.id === id);
+	public getTopRated(): Observable<Array<Show>> {
+		return this.getShows().pipe(map((shows) => shows.filter((show: Show) => show.averageRating > 4)));
+	}
+
+	public getShow(id: string): Observable<Show | null> {
+		if (Math.random() < 0.1) {
+			return this.getShows().pipe(
+				map((shows) => shows.find((show: Show) => show.id === id) || null),
+				throwError
+			);
+		} else {
+			return this.getShows().pipe(map((shows) => shows.find((show: Show) => show.id === id) || null));
+		}
 	}
 }

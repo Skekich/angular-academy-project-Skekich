@@ -1,3 +1,7 @@
-<ng-container *ngIf="show">
-	<app-show-detail [show]="show"></app-show-detail>
+<ng-container *ngIf="showDetailsData$ | async as showDetailsData; else isLoading">
+	<app-show-detail [show]="showDetailsData.showDetails"></app-show-detail>
+	<app-reviews [reviews]="showDetailsData.reviews"></app-reviews>
 </ng-container>
+<ng-template #isLoading>
+	<app-loading-spinner> </app-loading-spinner>
+</ng-template>

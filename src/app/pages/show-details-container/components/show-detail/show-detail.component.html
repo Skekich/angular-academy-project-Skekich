@@ -1,17 +1,19 @@
-<mat-card class="show-card">
-	<article>
-		<img [src]="show.imageUrl" alt="show image" />
-		<div class="show-information">
-			<h2>{{ show.title }}</h2>
-			<p class="show-rating">
-				Average Rating:
-				<span>
-					<app-rating [rating]="show.averageRating"></app-rating>
-				</span>
-			</p>
-		</div>
-	</article>
-	<article class="show-description">
-		<p>{{ show.description }}</p>
-	</article>
-</mat-card>
+<ng-container *ngIf="show">
+	<mat-card class="show-card">
+		<article>
+			<img [src]="show.imageUrl" alt="show image" />
+			<div class="show-information">
+				<h2>{{ show.title }}</h2>
+				<p class="show-rating">
+					Average Rating:
+					<span>
+						<app-rating [rating]="show.averageRating"></app-rating>
+					</span>
+				</p>
+			</div>
+		</article>
+		<article class="show-description">
+			<p>{{ show.description }}</p>
+		</article>
+	</mat-card>
+</ng-container>

@@ -1,0 +1,9 @@
+<ng-container *ngIf="reviews && reviews.length; else showTemplate">
+	<app-review-list [reviews]="reviews"></app-review-list>
+</ng-container>
+
+<ng-template #showTemplate>
+	<mat-card>
+		<h1>No reviews yet!</h1>
+	</mat-card>
+</ng-template>
