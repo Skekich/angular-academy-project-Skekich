@@ -23,6 +23,8 @@ import { CommentComponent } from './components/comment/comment.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { ReviewComponent } from './components/review/review.component';
 import { ReviewListComponent } from './components/review-list/review-list.component';
+import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
+import { UserLoginComponent } from './pages/user-login/user-login.component';
 
 @NgModule({
 	declarations: [
@@ -41,6 +43,8 @@ import { ReviewListComponent } from './components/review-list/review-list.compon
 		LoadingSpinnerComponent,
   ReviewComponent,
   ReviewListComponent,
+  UserRegistrationComponent,
+  UserLoginComponent,
 	],
 	imports: [
 		BrowserModule,
