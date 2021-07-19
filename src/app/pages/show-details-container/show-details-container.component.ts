@@ -4,6 +4,7 @@ import { combineLatest, Observable, of, throwError } from 'rxjs';
 import { catchError, delay, map, retry, switchMap } from 'rxjs/operators';
 import { ITemplateDetailsData } from 'src/app/interfaces/templateDetailsData.interface';
 import { Review } from 'src/app/services/review.model';
+import { ReviewService } from 'src/app/services/review.service';
 import { Show } from 'src/app/services/show.model';
 import { ShowService } from 'src/app/services/show.service';
 
@@ -27,7 +28,7 @@ export class ShowDetailsContainerComponent {
 		switchMap((paramMap) => {
 			const id: string | null = paramMap.get('id');
 			if (id) {
-				return this.showService.getSelectedShowReviews(id);
+				return this.reviewService.getSelectedShowReviews(id);
 			}
 			return of(null);
 		})
@@ -47,5 +48,5 @@ export class ShowDetailsContainerComponent {
 		})
 	);
 
-	constructor(private route: ActivatedRoute, private showService: ShowService) {}
+	constructor(private route: ActivatedRoute, private showService: ShowService, private reviewService: ReviewService) {}
 }

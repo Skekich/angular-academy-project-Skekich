@@ -1,21 +1,9 @@
-<ng-container *ngIf="reviews; else showTemplate">
-	<article>
-		<ng-container *ngFor="let review of reviews">
-			<mat-card class="show-review">
-				<p class="show-rating">
-					Rating:
-					<span>
-						<app-rating [rating]="review.rating"></app-rating>
-					</span>
-				</p>
-				<app-comment [comment]="review.comment"></app-comment>
-			</mat-card>
-		</ng-container>
-	</article>
+<ng-container *ngIf="reviews && reviews.length; else showTemplate">
+	<app-review-list [reviews]="reviews"></app-review-list>
 </ng-container>
 
 <ng-template #showTemplate>
-	<mat-card class="show-review no-reviews">
+	<mat-card>
 		<h1>No reviews yet!</h1>
 	</mat-card>
 </ng-template>

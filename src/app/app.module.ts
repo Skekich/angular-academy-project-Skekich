@@ -21,6 +21,8 @@ import { ShowDetailComponent } from './pages/show-details-container/components/s
 import { ReviewsComponent } from './pages/show-details-container/components/reviews/reviews.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { ReviewComponent } from './components/review/review.component';
+import { ReviewListComponent } from './components/review-list/review-list.component';
 
 @NgModule({
 	declarations: [
@@ -37,6 +39,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 		ReviewsComponent,
 		CommentComponent,
 		LoadingSpinnerComponent,
+  ReviewComponent,
+  ReviewListComponent,
 	],
 	imports: [
 		BrowserModule,
