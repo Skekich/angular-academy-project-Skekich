@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-user-login',
@@ -8,8 +8,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserLoginComponent {
-	public userLoginFormGroup: FormGroup = new FormGroup({
-		email: new FormControl('', [Validators.required, Validators.email]),
-		password: new FormControl(''),
+	public userLoginFormGroup: FormGroup = this.fb.group({
+		email: ['', [Validators.required, Validators.email]],
+		password: ['', [Validators.required]],
 	});
+
+	constructor(private fb: FormBuilder) {}
+
+	public onUserLogin(): void {
+		console.log(this.userLoginFormGroup.value);
+		this.userLoginFormGroup.reset();
+	}
 }

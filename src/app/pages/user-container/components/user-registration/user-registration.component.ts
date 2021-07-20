@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IRegisterUserData } from 'src/app/interfaces/registerUserData';
 
 @Component({
 	selector: 'app-user-registration',
@@ -8,13 +9,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserRegistrationComponent {
-	public userRegistrationFormGroup: FormGroup = new FormGroup({
-		email: new FormControl('', [Validators.required, Validators.email]),
-		password: new FormControl(''),
-		passwordConfirm: new FormControl(''),
+	@Output() regsterUser: EventEmitter<IRegisterUserData> = new EventEmitter();
+
+	public userRegistrationFormGroup: FormGroup = this.fb.group({
+		email: ['', [Validators.required, Validators.email]],
+		password: ['', [Validators.required, Validators.minLength(8)]],
+		passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
 	});
 
+	constructor(private fb: FormBuilder) {}
+
 	public onUserRegister(): void {
-		console.log(this.userRegistrationFormGroup.value);
+		this.regsterUser.emit(this.userRegistrationFormGroup.value);
+		this.userRegistrationFormGroup.reset();
 	}
 }

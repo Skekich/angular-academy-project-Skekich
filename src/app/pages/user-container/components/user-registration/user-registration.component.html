@@ -10,18 +10,27 @@
 
 		<mat-form-field appearance="outline">
 			<mat-label>Enter password</mat-label>
-			<input matInput placeholder="Placeholder" formControlName="password" />
+			<input type="password" matInput placeholder="Placeholder" formControlName="password" />
 			<mat-icon matPrefix>lock</mat-icon>
 			<mat-hint>Hint</mat-hint>
+			<mat-error *ngIf="userRegistrationFormGroup.get('password')?.errors?.required">Password is requiered</mat-error>
+			<mat-error *ngIf="!userRegistrationFormGroup.get('password')?.errors?.minLength"
+				>Password must be min 8 characters long</mat-error
+			>
 		</mat-form-field>
 
 		<mat-form-field appearance="outline">
 			<mat-label>Repeat password</mat-label>
-			<input matInput placeholder="Placeholder" formControlName="passwordConfirm" />
+			<input type="password" matInput placeholder="Placeholder" formControlName="passwordConfirm" />
 			<mat-icon matPrefix>lock</mat-icon>
 			<mat-hint>Hint</mat-hint>
+			<mat-error *ngIf="userRegistrationFormGroup.get('password')?.errors?.required">Password is requiered</mat-error>
+			<mat-error *ngIf="!userRegistrationFormGroup.get('password')?.errors?.minLength"
+				>Password must be min 8 characters long</mat-error
+			>
 		</mat-form-field>
 	</form>
 
 	<button mat-raised-button (click)="onUserRegister()" [disabled]="userRegistrationFormGroup.invalid">Register</button>
+	<p>Already have an account? <a [routerLink]="'/user-container/login'">Login</a></p>
 </mat-card>

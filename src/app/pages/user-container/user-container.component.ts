@@ -1,5 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { throwError } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
+import { IRegisterUserData } from 'src/app/interfaces/registerUserData';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
 	selector: 'app-user-container',
@@ -7,4 +10,19 @@ import { FormControl, FormGroup } from '@angular/forms';
 	styleUrls: ['./user-container.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserContainerComponent {}
+export class UserContainerComponent {
+	constructor(private authService: AuthService) {}
+
+	public onNewUserRegister(registerData: IRegisterUserData): void {
+		this.authService
+			.onUserRegister(registerData)
+			.pipe(
+				catchError((error) => {
+					return throwError(error.status);
+				})
+			)
+			.subscribe((registerData) => {
+				console.log(registerData);
+			});
+	}
+}

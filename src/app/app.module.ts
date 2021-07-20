@@ -29,6 +29,7 @@ import { UserContainerComponent } from './pages/user-container/user-container.co
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 	declarations: [
@@ -64,6 +65,7 @@ import { MatInputModule } from '@angular/material/input';
 		MatFormFieldModule,
 		ReactiveFormsModule,
 		MatInputModule,
+		HttpClientModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
