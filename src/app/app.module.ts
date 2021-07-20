@@ -25,6 +25,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { ReviewListComponent } from './components/review-list/review-list.component';
 import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { UserManagerComponent } from './components/user-manager/user-manager.component';
 
 @NgModule({
 	declarations: [
@@ -45,6 +46,7 @@ import { UserLoginComponent } from './pages/user-login/user-login.component';
   ReviewListComponent,
   UserRegistrationComponent,
   UserLoginComponent,
+  UserManagerComponent,
 	],
 	imports: [
 		BrowserModule,
