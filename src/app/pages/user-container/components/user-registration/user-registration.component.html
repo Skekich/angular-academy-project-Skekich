@@ -1,0 +1,27 @@
+<mat-card>
+	<form [formGroup]="userRegistrationFormGroup">
+		<mat-form-field appearance="outline">
+			<mat-label>Enter email</mat-label>
+			<input type="email" matInput placeholder="Placeholder" formControlName="email" />
+			<mat-icon matPrefix>person_add</mat-icon>
+			<mat-error *ngIf="userRegistrationFormGroup.get('email')?.errors?.required">Username is reqiered</mat-error>
+			<mat-error *ngIf="userRegistrationFormGroup.get('email')?.errors?.email">Username must be valid email</mat-error>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Enter password</mat-label>
+			<input matInput placeholder="Placeholder" formControlName="password" />
+			<mat-icon matPrefix>lock</mat-icon>
+			<mat-hint>Hint</mat-hint>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Repeat password</mat-label>
+			<input matInput placeholder="Placeholder" formControlName="passwordConfirm" />
+			<mat-icon matPrefix>lock</mat-icon>
+			<mat-hint>Hint</mat-hint>
+		</mat-form-field>
+	</form>
+
+	<button mat-raised-button (click)="onUserRegister()" [disabled]="userRegistrationFormGroup.invalid">Register</button>
+</mat-card>
