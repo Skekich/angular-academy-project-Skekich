@@ -5,9 +5,8 @@ import { UserFormLayoutComponent } from './components/user-form-layout/user-form
 import { AllShowsContainerComponent } from './pages/all-shows-container/all-shows-container.component';
 import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
 import { TopRatedShowsComponent } from './pages/top-rated-shows/top-rated-shows.component';
-import { UserLoginComponent } from './pages/user-container/components/user-login/user-login.component';
-import { UserRegistrationComponent } from './pages/user-container/components/user-registration/user-registration.component';
-import { UserContainerComponent } from './pages/user-container/user-container.component';
+import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
 
 const routes: Routes = [
 	{
@@ -33,15 +32,11 @@ const routes: Routes = [
 		component: UserFormLayoutComponent,
 		children: [
 			{
-				path: 'user-container',
-				component: UserContainerComponent,
-			},
-			{
-				path: 'user-container/login',
+				path: 'login',
 				component: UserLoginComponent,
 			},
 			{
-				path: 'user-container/registration',
+				path: 'registration',
 				component: UserRegistrationComponent,
 			},
 		],
