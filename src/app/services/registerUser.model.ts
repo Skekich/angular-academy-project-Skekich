@@ -1,4 +1,4 @@
-import { IRegisterUserData } from '../interfaces/registerUserData';
+import { IRegisterUserData } from '../interfaces/registerUserData.interface';
 
 export class RegisterUser {
 	constructor(registerData: IRegisterUserData) {

@@ -17,6 +17,6 @@
 		</mat-form-field>
 	</form>
 
-	<button mat-raised-button (click)="onUserLogin()" [disabled]="userLoginFormGroup.invalid">Login</button>
-	<p>Don't have an account? <a [routerLink]="'/user-container/registration'">Register</a></p>
+	<button mat-raised-button (click)="onLogin()" [disabled]="userLoginFormGroup.invalid">Login</button>
+	<p>Don't have an account? <a [routerLink]="'/registration'">Register</a></p>
 </mat-card>

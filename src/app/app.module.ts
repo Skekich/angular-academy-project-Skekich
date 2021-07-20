@@ -22,10 +22,9 @@ import { ReviewsComponent } from './pages/show-details-container/components/revi
 import { ShowDetailComponent } from './pages/show-details-container/components/show-detail/show-detail.component';
 import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
 import { TopRatedShowsComponent } from './pages/top-rated-shows/top-rated-shows.component';
-import { UserLoginComponent } from './pages/user-container/components/user-login/user-login.component';
-import { UserRegistrationComponent } from './pages/user-container/components/user-registration/user-registration.component';
+import { UserLoginComponent } from './pages/user-login/user-login.component';
+import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
 import { UserFormLayoutComponent } from './components/user-form-layout/user-form-layout.component';
-import { UserContainerComponent } from './pages/user-container/user-container.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -51,7 +50,6 @@ import { HttpClientModule } from '@angular/common/http';
 		UserLoginComponent,
 		UserRegistrationComponent,
 		UserFormLayoutComponent,
-		UserContainerComponent,
 	],
 	imports: [
 		AppRoutingModule,
