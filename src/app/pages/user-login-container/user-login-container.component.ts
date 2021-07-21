@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, delay, finalize } from 'rxjs/operators';
@@ -14,7 +15,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class UserLoginContainerComponent {
 	public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-	constructor(private authService: AuthService, private router: Router) {}
+	constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {}
 
 	public onUserLogin(loginData: ILoginUserData): void {
 		this.isLoading$.next(true);
@@ -26,6 +27,7 @@ export class UserLoginContainerComponent {
 					this.isLoading$.next(false);
 				}),
 				catchError((error) => {
+					this.snackBar.open('Incorrect password', 'Close');
 					return throwError(error.status);
 				})
 			)

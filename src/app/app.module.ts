@@ -32,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { UserLoginContainerComponent } from './pages/user-login-container/user-login-container.component';
 import { UserRegistrationContainerComponent } from './pages/user-registration-container/user-registration-container.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
 	declarations: [
@@ -70,6 +71,7 @@ import { UserRegistrationContainerComponent } from './pages/user-registration-co
 		MatInputModule,
 		HttpClientModule,
 		MatProgressBarModule,
+		MatSnackBarModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

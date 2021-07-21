@@ -12,11 +12,11 @@
 			<mat-label>Enter password</mat-label>
 			<input type="password" matInput placeholder="Placeholder" formControlName="password" />
 			<mat-icon matPrefix>lock</mat-icon>
-			<mat-hint>Hint</mat-hint>
 			<mat-error>Password is requiered</mat-error>
 		</mat-form-field>
 	</form>
-
-	<button mat-raised-button (click)="onLogin()" [disabled]="userLoginFormGroup.invalid">Login</button>
-	<p>Don't have an account? <a [routerLink]="'/registration'">Register</a></p>
+	<div class="login-button">
+		<button mat-raised-button (click)="onLogin()" [disabled]="userLoginFormGroup.invalid">Login</button>
+	</div>
+	<p class="no-account">Don't have an account? <a [routerLink]="'/registration'">Register</a></p>
 </mat-card>

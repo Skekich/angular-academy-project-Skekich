@@ -10,3 +10,13 @@ form {
 	display: flex;
 	flex-flow: column wrap;
 }
+
+.register-button {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 16px;
+}
+
+.go-login {
+	margin-top: 16px;
+}
