@@ -22,13 +22,16 @@ import { ReviewsComponent } from './pages/show-details-container/components/revi
 import { ShowDetailComponent } from './pages/show-details-container/components/show-detail/show-detail.component';
 import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
 import { TopRatedShowsComponent } from './pages/top-rated-shows/top-rated-shows.component';
-import { UserLoginComponent } from './pages/user-login/user-login.component';
-import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
+import { UserLoginComponent } from './pages/user-login-container/components/user-login/user-login.component';
+import { UserRegistrationComponent } from './pages/user-registration-container/components/user-registration/user-registration.component';
 import { UserFormLayoutComponent } from './components/user-form-layout/user-form-layout.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { UserLoginContainerComponent } from './pages/user-login-container/user-login-container.component';
+import { UserRegistrationContainerComponent } from './pages/user-registration-container/user-registration-container.component';
 
 @NgModule({
 	declarations: [
@@ -50,6 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
 		UserLoginComponent,
 		UserRegistrationComponent,
 		UserFormLayoutComponent,
+		UserRegistrationContainerComponent,
+		UserLoginContainerComponent,
 	],
 	imports: [
 		AppRoutingModule,
@@ -64,6 +69,7 @@ import { HttpClientModule } from '@angular/common/http';
 		ReactiveFormsModule,
 		MatInputModule,
 		HttpClientModule,
+		MatProgressBarModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

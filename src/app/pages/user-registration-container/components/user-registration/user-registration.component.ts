@@ -1,10 +1,6 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { IRegisterUserData } from 'src/app/interfaces/registerUserData.interface';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
 	selector: 'app-user-registration',
@@ -13,7 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserRegistrationComponent {
-	constructor(private fb: FormBuilder, private authService: AuthService, private route: Router) {}
+	@Output() registerUser: EventEmitter<IRegisterUserData> = new EventEmitter();
+
+	constructor(private fb: FormBuilder) {}
 
 	public userRegistrationFormGroup: FormGroup = this.fb.group({
 		email: ['', [Validators.required, Validators.email]],
@@ -21,22 +19,8 @@ export class UserRegistrationComponent {
 		passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
 	});
 
-	private onNewUserRegister(registerData: IRegisterUserData): void {
-		this.authService
-			.onUserRegister(registerData)
-			.pipe(
-				catchError((error) => {
-					return throwError(error.status);
-				})
-			)
-			.subscribe((registerData) => {
-				console.log(registerData);
-				this.route.navigate(['']);
-			});
-	}
-
 	public onUserRegister(): void {
-		this.onNewUserRegister(this.userRegistrationFormGroup.value);
+		this.registerUser.emit(this.userRegistrationFormGroup.value);
 		this.userRegistrationFormGroup.reset();
 	}
 }
