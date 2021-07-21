@@ -24,11 +24,14 @@
 			<input type="password" matInput placeholder="Placeholder" formControlName="passwordConfirm" />
 			<mat-icon matPrefix>lock</mat-icon>
 			<mat-hint>Hint</mat-hint>
-			<mat-error *ngIf="userRegistrationFormGroup.get('password')?.errors?.required">Password is requiered</mat-error>
-			<mat-error *ngIf="!userRegistrationFormGroup.get('password')?.errors?.minLength"
+			<mat-error *ngIf="userRegistrationFormGroup.get('passwordConfirm')?.errors?.required"
+				>Password is requiered</mat-error
+			>
+			<mat-error *ngIf="!userRegistrationFormGroup.get('passwordConfirm')?.errors?.minLength"
 				>Password must be min 8 characters long</mat-error
 			>
 		</mat-form-field>
+		<mat-error *ngIf="userRegistrationFormGroup.errors?.passwordError">Passwords do not match</mat-error>
 	</form>
 
 	<button mat-raised-button (click)="onUserRegister()" [disabled]="userRegistrationFormGroup.invalid">Register</button>

@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IRegisterUserData } from 'src/app/interfaces/registerUserData.interface';
+import { passwordMatchValidator } from 'src/app/validators/passwordMatch.validator';
 
 @Component({
 	selector: 'app-user-registration',
@@ -13,11 +14,16 @@ export class UserRegistrationComponent {
 
 	constructor(private fb: FormBuilder) {}
 
-	public userRegistrationFormGroup: FormGroup = this.fb.group({
-		email: ['', [Validators.required, Validators.email]],
-		password: ['', [Validators.required, Validators.minLength(8)]],
-		passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
-	});
+	public userRegistrationFormGroup: FormGroup = this.fb.group(
+		{
+			email: ['', [Validators.required, Validators.email]],
+			password: ['', [Validators.required, Validators.minLength(8)]],
+			passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
+		},
+		{
+			validator: passwordMatchValidator,
+		}
+	);
 
 	public onUserRegister(): void {
 		this.registerUser.emit(this.userRegistrationFormGroup.value);
