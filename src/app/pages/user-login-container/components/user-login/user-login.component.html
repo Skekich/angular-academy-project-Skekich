@@ -4,19 +4,19 @@
 			<mat-label>Enter email</mat-label>
 			<input type="email" matInput placeholder="Placeholder" formControlName="email" />
 			<mat-icon matPrefix>person</mat-icon>
-			<mat-error *ngIf="userLoginFormGroup.get('email')?.errors?.required">Username is reqiered</mat-error>
-			<mat-error *ngIf="userLoginFormGroup.get('email')?.errors?.email">Username must be valid email</mat-error>
+			<mat-error *ngIf="userLoginFormGroup.get('email')?.hasError('required')">Username is reqiered</mat-error>
+			<mat-error *ngIf="userLoginFormGroup.get('email')?.hasError('email')">Username must be valid email</mat-error>
 		</mat-form-field>
 
 		<mat-form-field appearance="outline">
 			<mat-label>Enter password</mat-label>
 			<input type="password" matInput placeholder="Placeholder" formControlName="password" />
 			<mat-icon matPrefix>lock</mat-icon>
-			<mat-error>Password is requiered</mat-error>
+			<mat-error *ngIf="userLoginFormGroup.get('password')?.hasError('required')">Username is reqiered</mat-error>
 		</mat-form-field>
 	</form>
 	<div class="login-button">
 		<button mat-raised-button (click)="onLogin()" [disabled]="userLoginFormGroup.invalid">Login</button>
 	</div>
-	<p class="no-account">Don't have an account? <a [routerLink]="'/registration'">Register</a></p>
+	<p class="no-account">Don't have an account? <a routerLink="/registration">Register</a></p>
 </mat-card>
