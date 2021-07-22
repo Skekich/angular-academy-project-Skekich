@@ -6,10 +6,10 @@ import { passwordMatchValidator } from 'src/app/validators/passwordMatch.validat
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
 	isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-		const invalidControl = !!(control && control.invalid && control.parent!.dirty);
-		const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+		const invalidCtrl: boolean = !!(control && control.invalid && control.parent!.dirty);
+		const invalidParent: boolean = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
 
-		return invalidControl || invalidParent;
+		return invalidCtrl || invalidParent;
 	}
 }
 
@@ -22,7 +22,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class UserRegistrationComponent {
 	@Output() registerUser: EventEmitter<IRegisterUserData> = new EventEmitter();
 
-	matcher = new ErrorStateMatcher();
+	matcher = new MyErrorStateMatcher();
 
 	constructor(private fb: FormBuilder) {}
 
@@ -30,7 +30,7 @@ export class UserRegistrationComponent {
 		{
 			email: ['', [Validators.required, Validators.email]],
 			password: ['', [Validators.required, Validators.minLength(8)]],
-			passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
+			passwordConfirm: [''],
 		},
 		{
 			validator: passwordMatchValidator,

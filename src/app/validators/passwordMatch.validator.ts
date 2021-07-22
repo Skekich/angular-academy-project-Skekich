@@ -1,8 +1,9 @@
-import { FormGroup } from '@angular/forms';
+import { FormGroup, ValidationErrors } from '@angular/forms';
 
-export function passwordMatchValidator(formGroup: FormGroup) {
-	let password: string = formGroup.controls.password.value;
-	let passwordConfirm: string = formGroup.controls.passwordConfirm.value;
-	console.log(password === passwordConfirm ? null : { passwordValidationError: true });
-	return password === passwordConfirm ? null : { passwordValidationError: true };
+export function passwordMatchValidator(formGroup: FormGroup): ValidationErrors | null {
+	const password: string = formGroup.controls.password.value;
+	const passwordConfirm: string = formGroup.controls.passwordConfirm.value;
+	const formGropValidator = password === passwordConfirm;
+
+	return formGropValidator ? null : { passwordValidationError: true };
 }
