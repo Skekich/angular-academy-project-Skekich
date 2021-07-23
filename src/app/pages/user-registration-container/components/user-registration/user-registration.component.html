@@ -5,7 +5,7 @@
 			<input type="email" matInput placeholder="Placeholder" formControlName="email" />
 			<mat-icon matPrefix>person_add</mat-icon>
 			<mat-error *ngIf="userRegistrationFormGroup.controls.email.hasError('required')">Username is reqiered</mat-error>
-			<mat-error *ngIf="!userRegistrationFormGroup.controls.email.hasError('minLength')"
+			<mat-error *ngIf="userRegistrationFormGroup.controls.email.hasError('email')"
 				>Username must be valid email</mat-error
 			>
 		</mat-form-field>
@@ -17,7 +17,7 @@
 			<mat-error *ngIf="userRegistrationFormGroup.controls.password.hasError('required')"
 				>Password is requiered</mat-error
 			>
-			<mat-error *ngIf="!userRegistrationFormGroup.controls.password.hasError('minLength')"
+			<mat-error *ngIf="userRegistrationFormGroup.controls.password.hasError('minlength')"
 				>Password must be min 8 characters long</mat-error
 			>
 			<mat-hint align="end">{{ input.value?.length || 0 }}/8</mat-hint>
