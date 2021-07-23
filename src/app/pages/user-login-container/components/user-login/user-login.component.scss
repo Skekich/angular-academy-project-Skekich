@@ -1,0 +1,21 @@
+:host {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	background-color: cadetblue;
+}
+
+form {
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.login-button {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 16px;
+}
+.no-account {
+	margin-top: 16px;
+}

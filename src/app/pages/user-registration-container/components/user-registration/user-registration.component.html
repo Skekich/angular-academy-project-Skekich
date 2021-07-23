@@ -1,0 +1,50 @@
+<mat-card>
+	<form [formGroup]="userRegistrationFormGroup">
+		<mat-form-field appearance="outline">
+			<mat-label>Enter email</mat-label>
+			<input type="email" matInput placeholder="Placeholder" formControlName="email" />
+			<mat-icon matPrefix>person_add</mat-icon>
+			<mat-error *ngIf="userRegistrationFormGroup.controls.email.hasError('required')">Username is reqiered</mat-error>
+			<mat-error *ngIf="userRegistrationFormGroup.controls.email.hasError('email')"
+				>Username must be valid email</mat-error
+			>
+		</mat-form-field>
+
+		<mat-form-field hintLabel="Min 8 characters" appearance="outline">
+			<mat-label>Enter password</mat-label>
+			<input type="password" #input matInput placeholder="Placeholder" formControlName="password" />
+			<mat-icon matPrefix>lock</mat-icon>
+			<mat-error *ngIf="userRegistrationFormGroup.controls.password.hasError('required')"
+				>Password is requiered</mat-error
+			>
+			<mat-error *ngIf="userRegistrationFormGroup.controls.password.hasError('minlength')"
+				>Password must be min 8 characters long</mat-error
+			>
+			<mat-hint align="end">{{ input.value?.length || 0 }}/8</mat-hint>
+		</mat-form-field>
+
+		<mat-form-field hintLabel="Min 8 characters" appearance="outline">
+			<mat-label>Repeat password</mat-label>
+			<input
+				type="password"
+				#inputConfirm
+				matInput
+				[errorStateMatcher]="matcher"
+				placeholder="Placeholder"
+				formControlName="passwordConfirm"
+			/>
+			<mat-icon matPrefix>lock</mat-icon>
+			<mat-error *ngIf="userRegistrationFormGroup.hasError('passwordValidationError')"
+				>Passwords do not match</mat-error
+			>
+			<mat-hint align="end">{{ inputConfirm.value?.length || 0 }}/8</mat-hint>
+		</mat-form-field>
+	</form>
+
+	<div class="register-button">
+		<button mat-raised-button (click)="onUserRegister()" [disabled]="userRegistrationFormGroup.invalid">
+			Register
+		</button>
+	</div>
+	<p class="go-login">Already have an account? <a routerLink="/login">Login</a></p>
+</mat-card>
