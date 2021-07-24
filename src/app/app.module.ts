@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -35,6 +35,7 @@ import { UserRegistrationContainerComponent } from './pages/user-registration-co
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { WriteReviewComponent } from './pages/show-details-container/components/write-review/write-review.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
 	declarations: [
@@ -75,6 +76,7 @@ import { WriteReviewComponent } from './pages/show-details-container/components/
 		MatSidenavModule,
 		MatSnackBarModule,
 		ReactiveFormsModule,
+		NgbModule,
 	],
 	providers: [
 		{
@@ -84,5 +86,6 @@ import { WriteReviewComponent } from './pages/show-details-container/components/
 		},
 	],
 	bootstrap: [AppComponent],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

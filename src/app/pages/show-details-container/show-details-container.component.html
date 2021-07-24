@@ -1,6 +1,6 @@
 <ng-container *ngIf="showDetailsData$ | async as showDetailsData; else isLoading">
 	<app-show-detail [show]="showDetailsData.showDetails"></app-show-detail>
-	<app-write-review></app-write-review>
+	<app-write-review (reviewData)="onReviewSubmit($event)"></app-write-review>
 	<app-reviews [reviews]="showDetailsData.reviews"></app-reviews>
 </ng-container>
 <ng-template #isLoading>

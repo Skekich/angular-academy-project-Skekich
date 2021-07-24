@@ -1,14 +1,24 @@
 <mat-card>
-	<form>
-		<mat-form-field appearance="fill">
-			<mat-label>Input</mat-label>
-			<input matInput />
-		</mat-form-field>
+	<form [formGroup]="writeRatingFormGroup">
+		<ngb-rating [max]="5" formControlName="rating">
+			<ng-template let-fill="fill" let-index="index">
+				<span class="star" [class.filled]="fill === 100">&#9733;</span>
+			</ng-template>
+		</ngb-rating>
 
 		<mat-form-field appearance="fill">
-			<mat-label>Textarea</mat-label>
-			<textarea matInput></textarea>
+			<mat-label>Review</mat-label>
+			<textarea
+				matInput
+				type="textarea"
+				formControlName="comment"
+				placeholder="Enter review"
+				#autosize="cdkTextareaAutosize"
+				cdkTextareaAutosize
+				cdkAutosizeMinRows="1"
+				cdkAutosizeMaxRows="5"
+			></textarea>
 		</mat-form-field>
 	</form>
-	<button mat-raised-button>submit</button>
+	<button mat-raised-button (click)="onSubmit()">submit</button>
 </mat-card>

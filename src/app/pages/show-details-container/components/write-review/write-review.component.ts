@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IAddReview } from 'src/app/interfaces/addReview.interface';
 
 @Component({
 	selector: 'app-write-review',
@@ -6,9 +8,17 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 	styleUrls: ['./write-review.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WriteReviewComponent implements OnInit {
-	public rating: number = 0;
-	constructor() {}
+export class WriteReviewComponent {
+	@Output() public reviewData: EventEmitter<IAddReview> = new EventEmitter();
+	constructor(private fb: FormBuilder) {}
 
-	ngOnInit(): void {}
+	public writeRatingFormGroup: FormGroup = this.fb.group({
+		rating: ['', [Validators.required]],
+		comment: ['', [Validators.required]],
+	});
+
+	onSubmit() {
+		this.reviewData.emit(this.writeRatingFormGroup.value);
+		this.writeRatingFormGroup.reset();
+	}
 }
