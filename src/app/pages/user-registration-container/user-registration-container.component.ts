@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
@@ -21,7 +22,6 @@ export class UserRegistrationContainerComponent {
 		this.authService
 			.onUserRegister(registerData)
 			.pipe(
-				delay(2000),
 				finalize(() => {
 					this.isLoading$.next(false);
 				}),
@@ -29,8 +29,7 @@ export class UserRegistrationContainerComponent {
 					return throwError(error.status);
 				})
 			)
-			.subscribe((registerData) => {
-				console.log(registerData);
+			.subscribe(() => {
 				this.router.navigate(['']);
 			});
 	}
