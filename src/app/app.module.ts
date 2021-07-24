@@ -28,11 +28,12 @@ import { UserFormLayoutComponent } from './components/user-form-layout/user-form
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { UserLoginContainerComponent } from './pages/user-login-container/user-login-container.component';
 import { UserRegistrationContainerComponent } from './pages/user-registration-container/user-registration-container.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
 	declarations: [
@@ -73,7 +74,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 		MatSnackBarModule,
 		ReactiveFormsModule,
 	],
-	providers: [],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthInterceptor,
+			multi: true,
+		},
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
