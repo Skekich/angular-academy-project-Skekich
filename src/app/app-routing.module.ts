@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { UserFormLayoutComponent } from './components/user-form-layout/user-form-layout.component';
+import { AppGuard } from './guards/app.guard';
 import { AllShowsContainerComponent } from './pages/all-shows-container/all-shows-container.component';
 import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
 import { TopRatedShowsComponent } from './pages/top-rated-shows/top-rated-shows.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
 				component: ShowDetailsContainerComponent,
 			},
 		],
+		canActivate: [AppGuard],
 	},
 	{
 		path: '',
