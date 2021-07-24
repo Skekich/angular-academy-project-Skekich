@@ -17,14 +17,17 @@ const routes: Routes = [
 			{
 				path: '',
 				component: AllShowsContainerComponent,
+				canActivate: [AppGuard],
 			},
 			{
 				path: 'top-rated',
 				component: TopRatedShowsComponent,
+				canActivate: [AppGuard],
 			},
 			{
 				path: 'show/:id',
 				component: ShowDetailsContainerComponent,
+				canActivate: [AppGuard],
 			},
 		],
 		canActivate: [AppGuard],

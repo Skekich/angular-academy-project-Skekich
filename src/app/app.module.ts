@@ -34,6 +34,7 @@ import { UserLoginContainerComponent } from './pages/user-login-container/user-l
 import { UserRegistrationContainerComponent } from './pages/user-registration-container/user-registration-container.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { WriteReviewComponent } from './pages/show-details-container/components/write-review/write-review.component';
 
 @NgModule({
 	declarations: [
@@ -57,6 +58,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 		UserLoginContainerComponent,
 		UserRegistrationComponent,
 		UserRegistrationContainerComponent,
+		WriteReviewComponent,
 	],
 	imports: [
 		AppRoutingModule,
