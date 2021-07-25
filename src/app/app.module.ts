@@ -75,8 +75,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 		MatProgressSpinnerModule,
 		MatSidenavModule,
 		MatSnackBarModule,
-		ReactiveFormsModule,
 		NgbModule,
+		ReactiveFormsModule,
 	],
 	providers: [
 		{

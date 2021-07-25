@@ -1,7 +1,7 @@
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IShow } from '../interfaces/show.interface';
 import { Show } from './show.model';

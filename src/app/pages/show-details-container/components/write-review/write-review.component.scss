@@ -2,6 +2,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
+}
+
+mat-card {
+	width: 50%;
 }
 
 form {
@@ -17,10 +22,22 @@ ngb-rating {
 	.filled {
 		color: #1e90ff;
 	}
-	.bad {
-		color: #deb0b0;
-	}
-	.filled.bad {
-		color: #ff1e1e;
-	}
+	margin-bottom: 16px;
+}
+
+.on-submit-button {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+}
+
+.star-rating {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+}
+
+.has-error {
+	font-size: 10px;
+	color: red;
 }

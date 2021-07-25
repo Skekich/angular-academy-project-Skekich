@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable, of, Subject, throwError } from 'rxjs';
 import { catchError, delay, map, retry, switchMap } from 'rxjs/operators';
 import { IAddReview } from 'src/app/interfaces/addReview.interface';
+import { ICurrentReview } from 'src/app/interfaces/currentReview.interface';
 import { ITemplateDetailsData } from 'src/app/interfaces/templateDetailsData.interface';
 import { Review } from 'src/app/services/review.model';
 import { ReviewService } from 'src/app/services/review.service';
@@ -19,7 +20,7 @@ export class ShowDetailsContainerComponent {
 	constructor(private route: ActivatedRoute, private showService: ShowService, private reviewService: ReviewService) {}
 	private showID: string | null;
 
-	public currentReview = new Subject<{ rating: number; comment: string }>();
+	public reviewSubject$: Subject<ICurrentReview> = new Subject<ICurrentReview>();
 
 	private show$: Observable<Show | null> = this.route.paramMap.pipe(
 		switchMap((paramMap) => {
@@ -59,7 +60,7 @@ export class ShowDetailsContainerComponent {
 		this.reviewService
 			.addReview({ rating: data.rating, comment: data.comment, showID: Number(this.showID) })
 			.subscribe(() => {
-				this.currentReview.next({ rating: data.rating, comment: data.comment });
+				this.reviewSubject$.next({ rating: data.rating, comment: data.comment });
 			});
 	}
 }

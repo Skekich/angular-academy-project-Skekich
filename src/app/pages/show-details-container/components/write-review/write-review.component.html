@@ -1,10 +1,20 @@
 <mat-card>
+	<h3>Write a review</h3>
 	<form [formGroup]="writeRatingFormGroup">
-		<ngb-rating [max]="5" formControlName="rating">
-			<ng-template let-fill="fill" let-index="index">
-				<span class="star" [class.filled]="fill === 100">&#9733;</span>
-			</ng-template>
-		</ngb-rating>
+		<div class="star-rating">
+			<span>Rating: </span>
+			<ngb-rating [max]="5" formControlName="rating">
+				<ng-template let-fill="fill" let-index="index">
+					<span class="star" [class.filled]="fill === 100">&#9733;</span>
+				</ng-template>
+			</ngb-rating>
+		</div>
+		<div
+			class="has-error"
+			*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
+		>
+			Rating is required
+		</div>
 
 		<mat-form-field appearance="fill">
 			<mat-label>Review</mat-label>
@@ -18,7 +28,10 @@
 				cdkAutosizeMinRows="1"
 				cdkAutosizeMaxRows="5"
 			></textarea>
+			<mat-error *ngIf="writeRatingFormGroup.controls.comment.hasError('required')">Comment is required</mat-error>
 		</mat-form-field>
 	</form>
-	<button mat-raised-button (click)="onSubmit()">submit</button>
+	<div class="on-submit-button">
+		<button mat-raised-button (click)="onSubmit()" [disabled]="writeRatingFormGroup.invalid">Submit</button>
+	</div>
 </mat-card>

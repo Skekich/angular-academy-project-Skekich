@@ -1,7 +1,7 @@
 <ng-container *ngIf="showDetailsData$ | async as showDetailsData; else isLoading">
 	<app-show-detail [show]="showDetailsData.showDetails"></app-show-detail>
 	<app-write-review (reviewData)="onReviewSubmit($event)"></app-write-review>
-	<ng-conainer *ngIf="currentReview | async as review">
+	<ng-conainer *ngIf="reviewSubject$ | async as review">
 		<app-review [rating]="review.rating" [comment]="review.comment"></app-review>
 	</ng-conainer>
 	<app-reviews [reviews]="showDetailsData.reviews"></app-reviews>
