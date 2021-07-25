@@ -13,11 +13,15 @@ export class ReviewService {
 	constructor(private http: HttpClient) {}
 
 	public addReview(review: IPostReview): Observable<HttpResponse<IPostReview>> {
-		return this.http.post<HttpResponse<IPostReview>>('https://tv-shows.infinum.academy/reviews', {
-			rating: review.rating,
-			comment: review.comment,
-			show_id: review.showID,
-		});
+		return this.http.post<IPostReview>(
+			'https://tv-shows.infinum.academy/reviews',
+			{
+				rating: review.rating,
+				comment: review.comment,
+				show_id: review.showID,
+			},
+			{ observe: 'response' }
+		);
 	}
 
 	public getSelectedShowReviews(id: string): Observable<Array<Review> | null> {

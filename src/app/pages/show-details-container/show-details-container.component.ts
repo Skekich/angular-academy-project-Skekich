@@ -1,11 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { combineLatest, Observable, of, throwError } from 'rxjs';
+import { combineLatest, Observable, of, Subject, throwError } from 'rxjs';
 import { catchError, delay, map, retry, switchMap } from 'rxjs/operators';
 import { IAddReview } from 'src/app/interfaces/addReview.interface';
 import { ITemplateDetailsData } from 'src/app/interfaces/templateDetailsData.interface';
-import { AuthService } from 'src/app/services/auth.service';
 import { Review } from 'src/app/services/review.model';
 import { ReviewService } from 'src/app/services/review.service';
 import { Show } from 'src/app/services/show.model';
@@ -18,10 +16,10 @@ import { ShowService } from 'src/app/services/show.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowDetailsContainerComponent {
-	public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
 	constructor(private route: ActivatedRoute, private showService: ShowService, private reviewService: ReviewService) {}
 	private showID: string | null;
+
+	public currentReview = new Subject<{ rating: number; comment: string }>();
 
 	private show$: Observable<Show | null> = this.route.paramMap.pipe(
 		switchMap((paramMap) => {
@@ -60,6 +58,8 @@ export class ShowDetailsContainerComponent {
 	onReviewSubmit(data: IAddReview): void {
 		this.reviewService
 			.addReview({ rating: data.rating, comment: data.comment, showID: Number(this.showID) })
-			.subscribe(() => {});
+			.subscribe(() => {
+				this.currentReview.next({ rating: data.rating, comment: data.comment });
+			});
 	}
 }
