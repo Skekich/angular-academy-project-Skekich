@@ -28,7 +28,7 @@ export class ShowService {
 		);
 	}
 
-	public getShow(id: string): Observable<Show | null> {
+	public getShow(id: string | null): Observable<Show | null> {
 		return this.http.get<{ show: IShow }>('https://tv-shows.infinum.academy/shows/' + id).pipe(
 			map((response) => {
 				return new Show(response.show);

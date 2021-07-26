@@ -1,6 +1,5 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IAddReview } from 'src/app/interfaces/addReview.interface';
 
 @Component({
 	selector: 'app-write-review',
@@ -9,7 +8,9 @@ import { IAddReview } from 'src/app/interfaces/addReview.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WriteReviewComponent {
-	@Output() public reviewData: EventEmitter<IAddReview> = new EventEmitter();
+	@Output() public reviewData: EventEmitter<any> = new EventEmitter();
+	@Input() public showId: number | null;
+
 	constructor(private fb: FormBuilder) {}
 
 	public writeRatingFormGroup: FormGroup = this.fb.group({
@@ -18,7 +19,11 @@ export class WriteReviewComponent {
 	});
 
 	onSubmit() {
-		this.reviewData.emit(this.writeRatingFormGroup.value);
+		this.reviewData.emit({
+			rating: this.writeRatingFormGroup.value.rating,
+			comment: this.writeRatingFormGroup.value.comment,
+			showId: this.showId,
+		});
 		this.writeRatingFormGroup.reset();
 	}
 }

@@ -18,13 +18,13 @@ export class ReviewService {
 			{
 				rating: review.rating,
 				comment: review.comment,
-				show_id: review.showID,
+				show_id: review.showId,
 			},
 			{ observe: 'response' }
 		);
 	}
 
-	public getSelectedShowReviews(id: string): Observable<Array<Review> | null> {
+	public getSelectedShowReviews(id: string | null): Observable<Array<Review> | null> {
 		return this.http.get<{ reviews: Array<IReview> }>('https://tv-shows.infinum.academy/shows/' + id + '/reviews').pipe(
 			map((response) => {
 				return response.reviews.map((data: IReview) => new Review(data));
