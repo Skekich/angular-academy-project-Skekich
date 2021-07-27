@@ -36,6 +36,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { WriteReviewComponent } from './pages/show-details-container/components/write-review/write-review.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
 @NgModule({
 	declarations: [
@@ -60,6 +61,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 		UserRegistrationComponent,
 		UserRegistrationContainerComponent,
 		WriteReviewComponent,
+		StarRatingComponent,
 	],
 	imports: [
 		AppRoutingModule,

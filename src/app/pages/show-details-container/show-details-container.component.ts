@@ -16,7 +16,8 @@ import { ShowService } from 'src/app/services/show.service';
 export class ShowDetailsContainerComponent {
 	constructor(private route: ActivatedRoute, private showService: ShowService, private reviewService: ReviewService) {}
 
-	public currentReview$: Subject<any> = new Subject<any>();
+	public currentReview$: Subject<boolean> = new Subject<boolean>();
+
 	public showDetailsData$: Observable<ITemplateDetailsData> = this.route.paramMap.pipe(
 		switchMap((mapData: ParamMap) => {
 			const id: string | null = mapData.get('id');
@@ -31,7 +32,6 @@ export class ShowDetailsContainerComponent {
 				switchMap(() => {
 					return combineLatest([this.showService.getShow(id), this.reviewService.getSelectedShowReviews(id)]).pipe(
 						map(([showDetails, reviews]) => {
-							console.log(reviews);
 							return {
 								showDetails,
 								reviews,
@@ -51,7 +51,7 @@ export class ShowDetailsContainerComponent {
 
 	onReviewSubmit(data: IPostReview): void {
 		this.reviewService.addReview(data).subscribe(() => {
-			this.currentReview$.next();
+			this.currentReview$.next(true);
 		});
 	}
 }

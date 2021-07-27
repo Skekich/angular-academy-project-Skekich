@@ -1,19 +1,9 @@
 <mat-card>
 	<h3>Write a review</h3>
 	<form [formGroup]="writeRatingFormGroup">
-		<div class="star-rating">
+		<div class="rating">
 			<span>Rating: </span>
-			<ngb-rating [max]="5" formControlName="rating">
-				<ng-template let-fill="fill" let-index="index">
-					<span class="star" [class.filled]="fill === 100">&#9733;</span>
-				</ng-template>
-			</ngb-rating>
-		</div>
-		<div
-			class="has-error"
-			*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
-		>
-			Rating is required
+			<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
 		</div>
 
 		<mat-form-field appearance="fill">
