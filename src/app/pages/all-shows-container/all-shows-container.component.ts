@@ -10,6 +10,7 @@ import { ShowService } from 'src/app/services/show.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AllShowsContainerComponent {
-	public shows$: Observable<Array<Show>> = this.showService.getShows();
 	constructor(private showService: ShowService) {}
+
+	public shows$: Observable<Array<Show>> = this.showService.getShows();
 }

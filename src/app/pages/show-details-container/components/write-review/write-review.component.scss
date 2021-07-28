@@ -1,0 +1,43 @@
+:host {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+mat-card {
+	width: 50%;
+}
+
+form {
+	display: flex;
+	flex-flow: column wrap;
+}
+
+ngb-rating {
+	.star {
+		font-size: 1.5rem;
+		color: #b0c4de;
+	}
+	.filled {
+		color: #1e90ff;
+	}
+	margin-bottom: 16px;
+}
+
+.on-submit-button {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+}
+
+.rating {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+}
+
+.has-error {
+	font-size: 10px;
+	color: red;
+}

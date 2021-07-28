@@ -1,0 +1,33 @@
+<mat-card>
+	<h3>Write a review</h3>
+	<form [formGroup]="writeRatingFormGroup">
+		<div class="rating">
+			<span>Rating: </span>
+			<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
+		</div>
+		<div
+			class="has-error"
+			*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
+		>
+			Rating required
+		</div>
+
+		<mat-form-field appearance="fill">
+			<mat-label>Review</mat-label>
+			<textarea
+				matInput
+				type="textarea"
+				formControlName="comment"
+				placeholder="Enter review"
+				#autosize="cdkTextareaAutosize"
+				cdkTextareaAutosize
+				cdkAutosizeMinRows="1"
+				cdkAutosizeMaxRows="5"
+			></textarea>
+			<mat-error *ngIf="writeRatingFormGroup.controls.comment.hasError('required')">Comment is required</mat-error>
+		</mat-form-field>
+	</form>
+	<div class="on-submit-button">
+		<button mat-raised-button (click)="onSubmit()" [disabled]="writeRatingFormGroup.invalid">Submit</button>
+	</div>
+</mat-card>

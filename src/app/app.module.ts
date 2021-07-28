@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,11 +28,15 @@ import { UserFormLayoutComponent } from './components/user-form-layout/user-form
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { UserLoginContainerComponent } from './pages/user-login-container/user-login-container.component';
 import { UserRegistrationContainerComponent } from './pages/user-registration-container/user-registration-container.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { WriteReviewComponent } from './pages/show-details-container/components/write-review/write-review.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
 @NgModule({
 	declarations: [
@@ -56,6 +60,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 		UserLoginContainerComponent,
 		UserRegistrationComponent,
 		UserRegistrationContainerComponent,
+		WriteReviewComponent,
+		StarRatingComponent,
 	],
 	imports: [
 		AppRoutingModule,
@@ -71,9 +77,17 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 		MatProgressSpinnerModule,
 		MatSidenavModule,
 		MatSnackBarModule,
+		NgbModule,
 		ReactiveFormsModule,
 	],
-	providers: [],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthInterceptor,
+			multi: true,
+		},
+	],
 	bootstrap: [AppComponent],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

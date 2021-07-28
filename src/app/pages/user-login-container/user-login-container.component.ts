@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
-import { catchError, delay, finalize } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { ILoginUserData } from 'src/app/interfaces/loginUserData.interface';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -22,7 +22,6 @@ export class UserLoginContainerComponent {
 		this.authService
 			.onUserLogin(loginData)
 			.pipe(
-				delay(2000),
 				finalize(() => {
 					this.isLoading$.next(false);
 				}),
@@ -31,8 +30,7 @@ export class UserLoginContainerComponent {
 					return throwError(error.status);
 				})
 			)
-			.subscribe((loginData) => {
-				console.log(loginData);
+			.subscribe(() => {
 				this.router.navigate(['']);
 			});
 	}
