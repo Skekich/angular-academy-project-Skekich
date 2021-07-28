@@ -20,30 +20,20 @@ export class ShowDetailsContainerComponent {
 	public currentShowId: number;
 
 	public showDetailsData$: Observable<ITemplateDetailsData> = this.route.paramMap.pipe(
-		switchMap((mapData: ParamMap) => {
-			const id: string | null = mapData.get('id');
-
-			if (!id) {
-				return throwError('Error');
-			}
-
-			this.currentShowId = Number(id);
-			return merge(
-				[this.showService.getShow(id), this.reviewService.getSelectedShowReviews(id)],
-				this.currentReview$
-			).pipe(
+		switchMap((data: ParamMap) => {
+			return merge(this.route.paramMap, this.currentReview$).pipe(
 				switchMap(() => {
+					const id: string | null = data.get('id');
+					if (!id) {
+						return throwError('Error');
+					}
+					this.currentShowId = Number(id);
 					return combineLatest([this.showService.getShow(id), this.reviewService.getSelectedShowReviews(id)]).pipe(
 						map(([showDetails, reviews]) => {
 							return {
 								showDetails,
 								reviews,
 							};
-						}),
-						delay(1000 + Math.random() * 1000),
-						retry(1),
-						catchError(() => {
-							return throwError('There was an error while getting data');
 						})
 					);
 				})
@@ -51,11 +41,11 @@ export class ShowDetailsContainerComponent {
 		})
 	);
 
-	public onReviewSubmit(postReviewData: IPostReview): void {
+	onReviewSubmit(data: IPostReview): void {
 		this.reviewService
 			.addReview({
-				rating: postReviewData.rating,
-				comment: postReviewData.comment,
+				rating: data.rating,
+				comment: data.comment,
 				showId: this.currentShowId,
 			})
 			.subscribe(() => {
