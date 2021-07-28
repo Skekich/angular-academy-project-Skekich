@@ -5,6 +5,12 @@
 			<span>Rating: </span>
 			<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
 		</div>
+		<div
+			class="has-error"
+			*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
+		>
+			Rating required
+		</div>
 
 		<mat-form-field appearance="fill">
 			<mat-label>Review</mat-label>

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
 
 interface IStar {
 	id: number;
@@ -27,8 +27,8 @@ export class StarRatingComponent {
 		}
 	}
 
-	selectStar(value: number): void {
-		this.stars.filter((star) => {
+	public selectStar(value: number): void {
+		this.stars.forEach((star) => {
 			if (star.id <= value) {
 				star.class = 'star-gold star';
 			} else {

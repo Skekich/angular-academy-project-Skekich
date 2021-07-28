@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class WriteReviewComponent {
 	@Output() public reviewData: EventEmitter<any> = new EventEmitter();
-	@Input() public showId: number | null;
 
 	constructor(private fb: FormBuilder) {}
 
@@ -18,11 +17,10 @@ export class WriteReviewComponent {
 		comment: ['', [Validators.required]],
 	});
 
-	onSubmit() {
+	public onSubmit() {
 		this.reviewData.emit({
 			rating: this.writeRatingFormGroup.value.rating,
 			comment: this.writeRatingFormGroup.value.comment,
-			showId: this.showId,
 		});
 		this.writeRatingFormGroup.reset();
 	}

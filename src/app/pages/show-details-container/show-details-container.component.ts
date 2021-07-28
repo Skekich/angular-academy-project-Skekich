@@ -17,14 +17,17 @@ export class ShowDetailsContainerComponent {
 	constructor(private route: ActivatedRoute, private showService: ShowService, private reviewService: ReviewService) {}
 
 	public currentReview$: Subject<boolean> = new Subject<boolean>();
+	public currentShowId: number;
 
 	public showDetailsData$: Observable<ITemplateDetailsData> = this.route.paramMap.pipe(
 		switchMap((mapData: ParamMap) => {
 			const id: string | null = mapData.get('id');
+
 			if (!id) {
 				return throwError('Error');
 			}
 
+			this.currentShowId = Number(id);
 			return merge(
 				[this.showService.getShow(id), this.reviewService.getSelectedShowReviews(id)],
 				this.currentReview$
@@ -35,7 +38,6 @@ export class ShowDetailsContainerComponent {
 							return {
 								showDetails,
 								reviews,
-								showId: Number(id),
 							};
 						}),
 						delay(1000 + Math.random() * 1000),
@@ -49,9 +51,15 @@ export class ShowDetailsContainerComponent {
 		})
 	);
 
-	onReviewSubmit(data: IPostReview): void {
-		this.reviewService.addReview(data).subscribe(() => {
-			this.currentReview$.next(true);
-		});
+	public onReviewSubmit(postReviewData: IPostReview): void {
+		this.reviewService
+			.addReview({
+				rating: postReviewData.rating,
+				comment: postReviewData.comment,
+				showId: this.currentShowId,
+			})
+			.subscribe(() => {
+				this.currentReview$.next(true);
+			});
 	}
 }
