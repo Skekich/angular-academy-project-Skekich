@@ -2,13 +2,11 @@
 	<mat-card class="show-card">
 		<img class="show-image" [src]="show.imageUrl" alt="show image" />
 		<div class="show-info">
-			<div>
-				<div class="show-name-rating">
-					<h2 class="show-name">{{ show.title }}</h2>
-					<p class="show-rating">
-						<app-rating [rating]="show.averageRating"></app-rating>
-					</p>
-				</div>
+			<div class="show-name-rating">
+				<h2 class="show-name">{{ show.title }}</h2>
+				<p class="show-rating">
+					<app-rating [rating]="show.averageRating"></app-rating>
+				</p>
 			</div>
 			<article class="show-description">
 				<p>{{ show.description }}</p>

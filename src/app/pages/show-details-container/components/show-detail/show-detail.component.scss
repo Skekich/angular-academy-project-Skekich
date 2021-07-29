@@ -13,16 +13,38 @@
 	padding: 0px;
 	border-radius: 24px;
 	overflow: hidden;
-
-	.show-info {
-		margin-top: 24px;
-		margin-bottom: 28px;
-		padding: 0px 25px;
-	}
 }
 
 .show-image {
 	width: 100%;
 	height: 343px;
 	object-fit: cover;
+}
+
+.show-info {
+	padding: 25px 25px;
+}
+
+.show-name,
+.show-rating,
+.show-description p {
+	margin: 0px;
+}
+
+@media only screen and (min-width: 800px) {
+	.show-info {
+		display: flex;
+		flex-flow: row nowrap;
+		margin: 0px;
+		width: 100%;
+		padding: 35px;
+	}
+
+	.show-name-rating {
+		flex: 0 1 calc(50%);
+	}
+
+	.show-description {
+		flex: 0 1 calc(50%);
+	}
 }
