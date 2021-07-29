@@ -1,0 +1,22 @@
+.content {
+	padding: 20px;
+}
+
+.navbar {
+	border-top-left-radius: 25px;
+}
+
+.header {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	margin-bottom: 25px;
+}
+
+.close-button {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	margin: 16px 16px;
+	padding: 0px;
+}
