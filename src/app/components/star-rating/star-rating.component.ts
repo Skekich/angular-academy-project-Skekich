@@ -16,13 +16,14 @@ export class StarRatingComponent {
 	@Output() currentRating: EventEmitter<any> = new EventEmitter();
 	private starCount: number = 5;
 	public stars: Array<IStar> = new Array<IStar>();
+	private clicked: boolean = false;
 
 	constructor() {
 		for (let i = 0; i < this.starCount; i++) {
 			this.stars.push({
 				id: i,
-				icon: 'star',
-				class: 'star-gray star-hover star',
+				icon: 'star_border',
+				class: 'star',
 			});
 		}
 	}
@@ -30,14 +31,26 @@ export class StarRatingComponent {
 	public selectStar(value: number): void {
 		this.stars.forEach((star) => {
 			if (star.id <= value) {
-				star.class = 'star-gold star';
+				star.icon = 'star';
 			} else {
-				star.class = 'star-gray star';
+				star.icon = 'star_border';
 			}
-
+			this.clicked = true;
 			return star;
 		});
 
 		this.currentRating.emit(value + 1);
+	}
+
+	public showStars(value: number): void {
+		this.stars.forEach((star) => {
+			if (!this.clicked) {
+				if (star.id <= value) {
+					star.icon = 'star';
+				} else {
+					star.icon = 'star_border';
+				}
+			}
+		});
 	}
 }

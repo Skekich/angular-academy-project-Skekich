@@ -63,7 +63,7 @@ import { LogoComponent } from './components/logo/logo.component';
 		UserRegistrationContainerComponent,
 		WriteReviewComponent,
 		StarRatingComponent,
-  LogoComponent,
+		LogoComponent,
 	],
 	imports: [
 		AppRoutingModule,

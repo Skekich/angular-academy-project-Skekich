@@ -1,6 +1,11 @@
 <div>
 	<div class="star-rating-container star-rating-animation" fxLayout="row" fxLayoutAlign="start center">
-		<div *ngFor="let star of stars" [ngClass]="[star.class]" (click)="selectStar(star.id)">
+		<div
+			*ngFor="let star of stars"
+			[ngClass]="[star.class]"
+			(click)="selectStar(star.id)"
+			(mouseover)="showStars(star.id)"
+		>
 			<mat-icon>{{ star.icon }}</mat-icon>
 		</div>
 	</div>
