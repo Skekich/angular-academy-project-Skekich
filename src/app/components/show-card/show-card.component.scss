@@ -1,3 +1,5 @@
+@use 'utils/colors';
+
 :host {
 	display: block;
 	width: 100%;
@@ -11,6 +13,7 @@
 	padding: 0px;
 	border-radius: 24px;
 	overflow: hidden;
+	background-color: colors.$white;
 }
 
 .image {
@@ -25,6 +28,7 @@
 	flex-flow: column nowrap;
 	justify-content: space-between;
 	padding: 18px 18px 13px;
+	color: colors.$purple;
 
 	.info-items {
 		margin: 0px;

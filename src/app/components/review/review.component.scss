@@ -1,5 +1,7 @@
+@use 'utils/colors';
+
 .show-review {
-	background-color: #f2f2f2;
+	background-color: colors.$purple;
 }
 .show-rating {
 	display: flex;

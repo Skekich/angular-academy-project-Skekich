@@ -1,19 +1,18 @@
 <ng-container *ngIf="show">
 	<mat-card class="show-card">
-		<article>
-			<img [src]="show.imageUrl" alt="show image" />
-			<div class="show-information">
-				<h2>{{ show.title }}</h2>
-				<p class="show-rating">
-					Average Rating:
-					<span>
+		<img class="show-image" [src]="show.imageUrl" alt="show image" />
+		<div class="show-info">
+			<div>
+				<div class="show-name-rating">
+					<h2 class="show-name">{{ show.title }}</h2>
+					<p class="show-rating">
 						<app-rating [rating]="show.averageRating"></app-rating>
-					</span>
-				</p>
+					</p>
+				</div>
 			</div>
-		</article>
-		<article class="show-description">
-			<p>{{ show.description }}</p>
-		</article>
+			<article class="show-description">
+				<p>{{ show.description }}</p>
+			</article>
+		</div>
 	</mat-card>
 </ng-container>

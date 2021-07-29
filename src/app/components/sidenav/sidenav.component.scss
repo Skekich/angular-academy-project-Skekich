@@ -20,6 +20,7 @@
 .list-link {
 	border-radius: 30px;
 	padding: 8px 13px;
+	margin-bottom: 19px;
 	text-decoration: none;
 	color: colors.$white;
 	font-family: Roboto;
@@ -34,13 +35,13 @@
 	}
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 800px) {
 	.logo {
 		padding: 25px 90px 0px 30px;
 		display: block;
 	}
 
 	.list {
-		margin: 77px 0px 0px 31px;
+		margin: 77px 120px 0px 31px;
 	}
 }

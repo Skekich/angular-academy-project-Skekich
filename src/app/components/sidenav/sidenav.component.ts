@@ -24,14 +24,6 @@ export class SidenavComponent {
 			url: '#',
 			title: 'My profile',
 		},
-		{
-			url: '/login',
-			title: 'Login',
-		},
-		{
-			url: '/registration',
-			title: 'Register',
-		},
 	];
 
 	public logOut(): void {
