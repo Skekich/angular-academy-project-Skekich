@@ -1,10 +1,16 @@
 <div class="app-sidenav">
-	<ul>
-		<li *ngFor="let link of links">
-			<a mat-button [routerLink]="link.url" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{
-				link.title
-			}}</a>
+	<app-logo class="logo"></app-logo>
+	<ul class="list">
+		<li class="list-element" *ngFor="let link of links">
+			<a
+				class="list-link"
+				mat-button
+				[routerLink]="link.url"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: true }"
+				>{{ link.title }}</a
+			>
 		</li>
-		<button mat-raised-button (click)="logOut()">Log out</button>
 	</ul>
+	<button mat-raised-button (click)="logOut()">Log out</button>
 </div>

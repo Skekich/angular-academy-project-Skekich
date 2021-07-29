@@ -1,20 +1,35 @@
+@use 'utils/colors';
+
 .app-sidenav {
 	display: flex;
-	justify-content: center;
-	width: 150px;
+	justify-content: flex-start;
+	flex-flow: column nowrap;
 	height: 100%;
 }
 
-ul {
+.logo {
+	padding: 25px 120px 0px 30px;
+}
+
+.list {
 	list-style: none;
-	margin: 0;
-	padding: 10px 0 10px 0;
+	padding: 0px;
+	margin: 77px 160px 0px 31px;
 }
 
-a {
-	border-radius: 32px;
-}
+.list-link {
+	border-radius: 30px;
+	padding: 8px 13px;
+	text-decoration: none;
+	color: colors.$white;
+	font-family: Roboto;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 28px;
+	text-align: center;
 
-.active {
-	background-color: burlywood;
+	&.active {
+		background-color: colors.$purple;
+	}
 }
