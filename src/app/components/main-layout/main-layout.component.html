@@ -1,10 +1,13 @@
 <mat-drawer-container class="main-layout">
 	<mat-drawer class="navbar" mode="over" position="end" #drawer>
-		<div class="close-button">
+		<article class="close-button">
 			<button mat-icon-button (click)="drawer.close()">
 				<mat-icon class="close-icon">close</mat-icon>
 			</button>
-		</div>
+		</article>
+		<app-sidenav></app-sidenav>
+	</mat-drawer>
+	<mat-drawer class="opened-navbar" mode="side" opened>
 		<app-sidenav></app-sidenav>
 	</mat-drawer>
 	<mat-drawer-content class="content">
