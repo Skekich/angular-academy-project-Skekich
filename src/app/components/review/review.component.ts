@@ -9,4 +9,6 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 export class ReviewComponent {
 	@Input() rating: number;
 	@Input() comment: string;
+	@Input() email: string;
+	@Input() imageUrl: string;
 }

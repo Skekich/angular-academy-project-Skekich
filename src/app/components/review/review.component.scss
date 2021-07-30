@@ -1,11 +1,71 @@
 @use 'utils/colors';
 
-.show-review {
-	background-color: colors.$purple;
+:host {
+	margin: 0px;
+	padding: 0px;
 }
-.show-rating {
+
+.review {
+	margin: 16px 0px;
+}
+
+.show-review {
 	display: flex;
 	justify-content: flex-start;
-	align-items: baseline;
+	flex-flow: column nowrap;
+	background-color: colors.$purple;
+	border-radius: 24px;
+	padding: 0px;
+}
+
+.user-info {
+	display: flex;
 	flex-flow: row nowrap;
+	margin-top: 24px;
+	margin-left: 14px;
+}
+
+.show-rating {
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+.user-image {
+	width: 60px;
+	height: 40px;
+
+	mat-icon {
+		font-size: 40px;
+	}
+}
+
+.image {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.comment {
+	padding: 10px 20px 15px;
+}
+
+@media only screen and (min-width: 800px) {
+	.review {
+		margin-left: 170px;
+	}
+	.show-review {
+		flex-flow: row nowrap;
+	}
+
+	.user-info {
+		margin: 30px 90px 30px 40px;
+		flex: 1 0 calc(25%);
+	}
+
+	.comment {
+		padding: 0px;
+		margin-top: 24px;
+		flex: 1 0 calc(75%);
+	}
 }

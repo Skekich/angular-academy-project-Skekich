@@ -1,11 +1,20 @@
-<article>
+<article class="review">
 	<mat-card class="show-review">
-		<p class="show-rating">
-			Rating:
-			<span>
+		<article class="user-info">
+			<div *ngIf="!imageUrl; else userImage" class="user-image">
+				<mat-icon class="image">person</mat-icon>
+			</div>
+			<div class="show-rating">
+				<p>{{ email }}</p>
 				<app-rating [rating]="rating"></app-rating>
-			</span>
-		</p>
-		<app-comment [comment]="comment"></app-comment>
+			</div>
+		</article>
+		<app-comment class="comment" [comment]="comment"></app-comment>
 	</mat-card>
 </article>
+
+<ng-template #userImage>
+	<div class="user-image">
+		<img class="image" src="../../../assets/Images/terry.jpeg" alt="no image" />
+	</div>
+</ng-template>
