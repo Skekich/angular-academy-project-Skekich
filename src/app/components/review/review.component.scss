@@ -7,6 +7,7 @@
 
 .review {
 	margin: 16px 0px;
+	width: 100%;
 }
 
 .show-review {
@@ -51,21 +52,19 @@
 }
 
 @media only screen and (min-width: 800px) {
-	.review {
-		margin-left: 170px;
-	}
 	.show-review {
 		flex-flow: row nowrap;
+		margin-left: 160px;
 	}
 
 	.user-info {
 		margin: 30px 90px 30px 40px;
-		flex: 1 0 calc(25%);
+		flex: 0 1 calc(30%);
 	}
 
 	.comment {
 		padding: 0px;
 		margin-top: 24px;
-		flex: 1 0 calc(75%);
+		flex: 0 1 calc(70%);
 	}
 }
