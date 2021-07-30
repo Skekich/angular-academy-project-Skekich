@@ -1,8 +1,7 @@
-<mat-card class="rating-form">
-	<h3>Write a review</h3>
+<mat-card class="rating-card">
+	<p class="review">Reviews</p>
 	<form [formGroup]="writeRatingFormGroup">
-		<mat-form-field appearance="fill">
-			<mat-label>Review</mat-label>
+		<mat-form-field class="rating-field" appearance="fill">
 			<textarea
 				matInput
 				type="textarea"
@@ -15,19 +14,23 @@
 			></textarea>
 			<mat-error *ngIf="writeRatingFormGroup.controls.comment.hasError('required')">Comment is required</mat-error>
 		</mat-form-field>
+		<article class="rating-post">
+			<div class="rating">
+				<span>Rating</span>
+				<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
+			</div>
+			<div
+				class="has-error"
+				*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
+			>
+				Rating required
+			</div>
 
-		<div class="rating">
-			<span>Rating: </span>
-			<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
-		</div>
-		<div
-			class="has-error"
-			*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
-		>
-			Rating required
-		</div>
+			<div class="on-submit-button">
+				<button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="writeRatingFormGroup.invalid">
+					Submit
+				</button>
+			</div>
+		</article>
 	</form>
-	<div class="on-submit-button">
-		<button mat-raised-button (click)="onSubmit()" [disabled]="writeRatingFormGroup.invalid">Submit</button>
-	</div>
 </mat-card>
