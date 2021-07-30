@@ -3,16 +3,16 @@
 
 	<form class="form" [formGroup]="userLoginFormGroup">
 		<mat-form-field class="email" appearance="outline">
-			<mat-label>Enter email</mat-label>
-			<input type="email" matInput placeholder="Placeholder" formControlName="email" />
+			<mat-label>Email</mat-label>
+			<input type="email" matInput placeholder="Email" formControlName="email" />
 			<mat-icon matPrefix>person</mat-icon>
 			<mat-error *ngIf="userLoginFormGroup.controls.email.hasError('required')">Username is reqiered</mat-error>
 			<mat-error *ngIf="userLoginFormGroup.controls.email.hasError('email')">Username must be valid email</mat-error>
 		</mat-form-field>
 
 		<mat-form-field class="password" appearance="outline">
-			<mat-label>Enter password</mat-label>
-			<input type="password" matInput placeholder="Placeholder" formControlName="password" />
+			<mat-label>Password</mat-label>
+			<input type="password" matInput placeholder="Password" formControlName="password" />
 			<mat-icon matPrefix>lock</mat-icon>
 			<mat-error *ngIf="userLoginFormGroup.controls.password.hasError('required')">Username is reqiered</mat-error>
 		</mat-form-field>
