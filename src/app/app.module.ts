@@ -38,6 +38,7 @@ import { WriteReviewComponent } from './pages/show-details-container/components/
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { StarsComponent } from './components/stars/stars.component';
 
 @NgModule({
 	declarations: [
@@ -64,6 +65,7 @@ import { LogoComponent } from './components/logo/logo.component';
 		WriteReviewComponent,
 		StarRatingComponent,
 		LogoComponent,
+  StarsComponent,
 	],
 	imports: [
 		AppRoutingModule,
