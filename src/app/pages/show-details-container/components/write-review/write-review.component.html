@@ -1,19 +1,23 @@
-<mat-card class="rating-card">
+<article class="rating-card">
 	<p class="review">Reviews</p>
 	<form [formGroup]="writeRatingFormGroup">
-		<mat-form-field class="rating-field" appearance="fill">
-			<textarea
-				matInput
-				type="textarea"
-				formControlName="comment"
+		<div class="comment">
+			<input
+				class="comment-input"
+				id="comment"
+				type="text"
+				name="comment"
 				placeholder="Enter review"
-				#autosize="cdkTextareaAutosize"
-				cdkTextareaAutosize
-				cdkAutosizeMinRows="1"
-				cdkAutosizeMaxRows="5"
-			></textarea>
-			<mat-error *ngIf="writeRatingFormGroup.controls.comment.hasError('required')">Comment is required</mat-error>
-		</mat-form-field>
+				formControlName="comment"
+			/>
+			<div
+				class="has-error"
+				*ngIf="writeRatingFormGroup.controls.comment.hasError('required') && writeRatingFormGroup.touched"
+			>
+				Rating required
+			</div>
+		</div>
+
 		<article class="rating-post">
 			<div class="rating">
 				<span>Rating</span>
@@ -33,4 +37,4 @@
 			</div>
 		</article>
 	</form>
-</mat-card>
+</article>
