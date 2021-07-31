@@ -1,5 +1,9 @@
 @use 'utils/colors';
 
+:host {
+	height: 100%;
+}
+
 .app-sidenav {
 	display: flex;
 	justify-content: flex-start;

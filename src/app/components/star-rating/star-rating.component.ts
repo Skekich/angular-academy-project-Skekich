@@ -2,7 +2,6 @@ import { Component, ChangeDetectionStrategy, EventEmitter, Output } from '@angul
 
 interface IStar {
 	id: number;
-	icon: string;
 	class: string;
 }
 
@@ -16,41 +15,38 @@ export class StarRatingComponent {
 	@Output() currentRating: EventEmitter<any> = new EventEmitter();
 	private starCount: number = 5;
 	public stars: Array<IStar> = new Array<IStar>();
-	private clicked: boolean = false;
+
+	private starSelected: number = 0;
+	private tempStarSelected: number = 0;
 
 	constructor() {
-		for (let i = 0; i < this.starCount; i++) {
+		for (let i = 1; i <= this.starCount; i++) {
 			this.stars.push({
 				id: i,
-				icon: 'star_border',
 				class: 'star',
 			});
 		}
 	}
 
 	public selectStar(value: number): void {
-		this.stars.forEach((star) => {
-			if (star.id <= value) {
-				star.icon = 'star';
-			} else {
-				star.icon = 'star_border';
-			}
-			this.clicked = true;
-			return star;
-		});
-
-		this.currentRating.emit(value + 1);
+		this.starSelected = value;
+		console.log(value);
+		this.currentRating.emit(value);
 	}
 
-	public showStars(value: number): void {
-		this.stars.forEach((star) => {
-			if (!this.clicked) {
-				if (star.id <= value) {
-					star.icon = 'star';
-				} else {
-					star.icon = 'star_border';
-				}
-			}
-		});
+	public onMouseEnter(value: number): void {
+		this.tempStarSelected = value;
+	}
+
+	public onMouseLeave(): void {
+		this.tempStarSelected = this.starSelected;
+	}
+
+	public showStars(value: number): string {
+		if (value <= this.tempStarSelected) {
+			return 'star';
+		} else {
+			return 'star_border';
+		}
 	}
 }
