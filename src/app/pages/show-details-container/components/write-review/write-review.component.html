@@ -1,40 +1,42 @@
-<article class="rating-card">
-	<p class="review">Reviews</p>
-	<form [formGroup]="writeRatingFormGroup">
-		<div class="comment">
-			<input
-				class="comment-input"
-				id="comment"
-				type="text"
-				name="comment"
-				placeholder="Enter review"
-				formControlName="comment"
-			/>
-			<div
-				class="has-error"
-				*ngIf="writeRatingFormGroup.controls.comment.hasError('required') && writeRatingFormGroup.touched"
-			>
-				Rating required
-			</div>
-		</div>
-
-		<article class="rating-post">
-			<div class="rating">
-				<span>Rating</span>
-				<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
-			</div>
-			<div
-				class="has-error"
-				*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
-			>
-				Rating required
+<ng-container *ngIf="layout$ | async as layout">
+	<article [class]="layout.isSmall ? 'rating-card rating-card-small' : 'rating-card rating-card-large'">
+		<p class="review">Reviews</p>
+		<form [formGroup]="writeRatingFormGroup">
+			<div [class]="layout.isSmall ? 'comment comment-small' : 'comment comment-large'">
+				<input
+					[class]="layout.isSmall ? 'comment-input comment-input-small' : 'comment-input comment-input-large'"
+					id="comment"
+					type="text"
+					name="comment"
+					placeholder="Enter review"
+					formControlName="comment"
+				/>
+				<div
+					class="has-error"
+					*ngIf="writeRatingFormGroup.controls.comment.hasError('required') && writeRatingFormGroup.touched"
+				>
+					Rating required
+				</div>
 			</div>
 
-			<div class="on-submit-button">
-				<button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="writeRatingFormGroup.invalid">
-					Submit
-				</button>
-			</div>
-		</article>
-	</form>
-</article>
+			<article class="rating-post">
+				<div [class]="layout.isSmall ? 'rating' : 'rating rating-large'">
+					<span>Rating</span>
+					<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
+				</div>
+				<div
+					class="has-error"
+					*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
+				>
+					Rating required
+				</div>
+
+				<div class="on-submit-button">
+					<button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="writeRatingFormGroup.invalid">
+						Submit
+					</button>
+				</div>
+			</article>
+		</form>
+	</article>
+</ng-container>
