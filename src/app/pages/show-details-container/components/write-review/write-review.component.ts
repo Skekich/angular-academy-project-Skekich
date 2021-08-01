@@ -38,8 +38,4 @@ export class WriteReviewComponent {
 		});
 		this.writeRatingFormGroup.reset();
 	}
-
-	public SnackError() {
-		this.snackBar.open('Comment and rating required', 'Close');
-	}
 }

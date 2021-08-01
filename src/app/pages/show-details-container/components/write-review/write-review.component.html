@@ -11,16 +11,6 @@
 					placeholder="Enter review"
 					formControlName="comment"
 				/>
-				<div
-					class="has-error"
-					*ngIf="
-						writeRatingFormGroup.controls.comment.hasError('required') && writeRatingFormGroup.controls.comment.touched
-							? SnackError()
-							: false
-					"
-				>
-					Rating required
-				</div>
 			</div>
 
 			<article class="rating-post">
@@ -35,6 +25,24 @@
 					</button>
 				</div>
 			</article>
+			<div class="has-error">
+				<div
+					*ngIf="
+						writeRatingFormGroup.controls.comment.hasError('required') && writeRatingFormGroup.controls.comment.touched
+					"
+				>
+					Comment required
+				</div>
+				<div
+					*ngIf="
+						writeRatingFormGroup.controls.rating.hasError('required') &&
+						writeRatingFormGroup.controls.rating.untouched &&
+						writeRatingFormGroup.touched
+					"
+				>
+					Rating required
+				</div>
+			</div>
 		</form>
 	</article>
 </ng-container>
