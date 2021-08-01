@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ILayout } from 'src/app/interfaces/layout.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
 	selector: 'app-write-review',
@@ -15,7 +16,7 @@ export class WriteReviewComponent {
 	@Output() public reviewData: EventEmitter<any> = new EventEmitter();
 	public layout$: Observable<ILayout>;
 
-	constructor(private fb: FormBuilder, breakpointsObserver: BreakpointObserver) {
+	constructor(private fb: FormBuilder, breakpointsObserver: BreakpointObserver, private snackBar: MatSnackBar) {
 		this.layout$ = breakpointsObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
 			map(({ matches }) => {
 				return {
@@ -36,5 +37,9 @@ export class WriteReviewComponent {
 			comment: this.writeRatingFormGroup.value.comment,
 		});
 		this.writeRatingFormGroup.reset();
+	}
+
+	public SnackError() {
+		this.snackBar.open('Comment and rating required', 'Close');
 	}
 }

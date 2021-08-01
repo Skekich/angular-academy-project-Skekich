@@ -13,7 +13,11 @@
 				/>
 				<div
 					class="has-error"
-					*ngIf="writeRatingFormGroup.controls.comment.hasError('required') && writeRatingFormGroup.touched"
+					*ngIf="
+						writeRatingFormGroup.controls.comment.hasError('required') && writeRatingFormGroup.controls.comment.touched
+							? SnackError()
+							: false
+					"
 				>
 					Rating required
 				</div>
@@ -23,12 +27,6 @@
 				<div [class]="layout.isSmall ? 'rating' : 'rating rating-large'">
 					<span>Rating</span>
 					<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
-				</div>
-				<div
-					class="has-error"
-					*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
-				>
-					Rating required
 				</div>
 
 				<div class="on-submit-button">
