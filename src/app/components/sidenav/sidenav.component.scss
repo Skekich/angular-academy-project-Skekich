@@ -8,17 +8,14 @@
 	display: flex;
 	justify-content: space-between;
 	flex-flow: column nowrap;
-	height: 100%;
-}
-
-.logo {
-	display: none;
+	height: calc(100% - 90px);
 }
 
 .list {
 	list-style: none;
 	padding: 0px;
 	margin: 50px 130px 0px 31px;
+	height: 100%;
 }
 
 .list-link {
@@ -43,21 +40,10 @@
 	border-radius: 30px;
 	width: 68px;
 	padding: 0px;
-	margin: 50px;
+	margin-left: 50px;
 	font-family: Roboto;
 	font-weight: 500;
 	font-style: normal;
 	font-size: 20px;
 	line-height: 16px;
-}
-
-@media only screen and (min-width: 800px) {
-	.logo {
-		padding: 25px 90px 0px 30px;
-		display: block;
-	}
-
-	.list {
-		margin: 77px 120px 0px 31px;
-	}
 }

@@ -39,6 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { StarsComponent } from './components/stars/stars.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
 	declarations: [
@@ -65,7 +66,7 @@ import { StarsComponent } from './components/stars/stars.component';
 		WriteReviewComponent,
 		StarRatingComponent,
 		LogoComponent,
-  StarsComponent,
+		StarsComponent,
 	],
 	imports: [
 		AppRoutingModule,
@@ -83,6 +84,7 @@ import { StarsComponent } from './components/stars/stars.component';
 		MatSnackBarModule,
 		NgbModule,
 		ReactiveFormsModule,
+		LayoutModule,
 	],
 	providers: [
 		{

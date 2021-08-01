@@ -22,10 +22,6 @@
 	margin-bottom: 25px;
 }
 
-.opened-navbar {
-	display: none;
-}
-
 .close-button {
 	display: flex;
 	flex-flow: row nowrap;
@@ -34,16 +30,7 @@
 	padding: 0px;
 }
 
-@media only screen and (min-width: 800px) {
-	.header {
-		display: none;
-	}
-
-	.navbar {
-		display: none;
-	}
-
-	.opened-navbar {
-		display: flex;
-	}
+.logo {
+	padding: 25px 90px 0px 30px;
+	display: flex;
 }
