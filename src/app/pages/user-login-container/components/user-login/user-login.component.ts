@@ -1,5 +1,9 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ILayout } from 'src/app/interfaces/layout.interface';
 import { ILoginUserData } from 'src/app/interfaces/loginUserData.interface';
 
 @Component({
@@ -10,8 +14,17 @@ import { ILoginUserData } from 'src/app/interfaces/loginUserData.interface';
 })
 export class UserLoginComponent {
 	@Output() userLogin: EventEmitter<ILoginUserData> = new EventEmitter();
+	public layout$: Observable<ILayout>;
 
-	constructor(private fb: FormBuilder) {}
+	constructor(private fb: FormBuilder, breakpointObserver: BreakpointObserver) {
+		this.layout$ = breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
+			map(({ matches }) => {
+				return {
+					isSmall: matches,
+				};
+			})
+		);
+	}
 
 	public userLoginFormGroup: FormGroup = this.fb.group({
 		email: ['', [Validators.required, Validators.email]],

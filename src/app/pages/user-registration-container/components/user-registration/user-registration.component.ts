@@ -1,6 +1,10 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ILayout } from 'src/app/interfaces/layout.interface';
 import { IRegisterUserData } from 'src/app/interfaces/registerUserData.interface';
 import { passwordMatchValidator } from 'src/app/validators/passwordMatch.validator';
 
@@ -21,10 +25,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class UserRegistrationComponent {
 	@Output() registerUser: EventEmitter<IRegisterUserData> = new EventEmitter();
+	public layout$: Observable<ILayout>;
 
 	matcher = new MyErrorStateMatcher();
 
-	constructor(private fb: FormBuilder) {}
+	constructor(private fb: FormBuilder, breakpointsObserver: BreakpointObserver) {
+		this.layout$ = breakpointsObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
+			map(({ matches }) => {
+				return {
+					isSmall: matches,
+				};
+			})
+		);
+	}
 
 	public userRegistrationFormGroup: FormGroup = this.fb.group(
 		{

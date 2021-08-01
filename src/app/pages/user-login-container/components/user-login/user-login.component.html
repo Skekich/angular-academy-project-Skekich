@@ -1,24 +1,28 @@
-<mat-card class="login-card">
-	<app-logo></app-logo>
+<ng-container *ngIf="layout$ | async as layout">
+	<mat-card [class]="layout.isSmall ? 'login-card login-card-small' : 'login-card login-card-large'">
+		<app-logo></app-logo>
 
-	<form class="form" [formGroup]="userLoginFormGroup">
-		<mat-form-field class="email" appearance="outline">
-			<mat-label>Email</mat-label>
-			<input type="email" matInput placeholder="Email" formControlName="email" />
-			<mat-icon matPrefix>person</mat-icon>
-			<mat-error *ngIf="userLoginFormGroup.controls.email.hasError('required')">Username is reqiered</mat-error>
-			<mat-error *ngIf="userLoginFormGroup.controls.email.hasError('email')">Username must be valid email</mat-error>
-		</mat-form-field>
+		<form class="form" [formGroup]="userLoginFormGroup">
+			<mat-form-field class="email" appearance="outline">
+				<mat-label>Email</mat-label>
+				<input type="email" matInput placeholder="Email" formControlName="email" />
+				<mat-icon matPrefix>person</mat-icon>
+				<mat-error *ngIf="userLoginFormGroup.controls.email.hasError('required')">Username is reqiered</mat-error>
+				<mat-error *ngIf="userLoginFormGroup.controls.email.hasError('email')">Username must be valid email</mat-error>
+			</mat-form-field>
 
-		<mat-form-field class="password" appearance="outline">
-			<mat-label>Password</mat-label>
-			<input type="password" matInput placeholder="Password" formControlName="password" />
-			<mat-icon matPrefix>lock</mat-icon>
-			<mat-error *ngIf="userLoginFormGroup.controls.password.hasError('required')">Username is reqiered</mat-error>
-		</mat-form-field>
-	</form>
-	<div class="login-button">
-		<button mat-raised-button color="primary" (click)="onLogin()" [disabled]="userLoginFormGroup.invalid">Login</button>
-	</div>
-	<p class="no-account">Don't have an account? <a class="register" routerLink="/registration">Register</a></p>
-</mat-card>
+			<mat-form-field class="password" appearance="outline">
+				<mat-label>Password</mat-label>
+				<input type="password" matInput placeholder="Password" formControlName="password" />
+				<mat-icon matPrefix>lock</mat-icon>
+				<mat-error *ngIf="userLoginFormGroup.controls.password.hasError('required')">Username is reqiered</mat-error>
+			</mat-form-field>
+		</form>
+		<div class="login-button">
+			<button mat-raised-button color="primary" (click)="onLogin()" [disabled]="userLoginFormGroup.invalid">
+				Login
+			</button>
+		</div>
+		<p class="no-account">Don't have an account? <a class="register" routerLink="/registration">Register</a></p>
+	</mat-card>
+</ng-container>
