@@ -1,5 +1,8 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Review } from 'src/app/services/review.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ILayout } from 'src/app/interfaces/layout.interface';
 import { Show } from 'src/app/services/show.model';
 
 @Component({
@@ -10,4 +13,16 @@ import { Show } from 'src/app/services/show.model';
 })
 export class ShowDetailComponent {
 	@Input() show: Show | null;
+
+	public layout$: Observable<ILayout>;
+
+	constructor(breakpointsObserver: BreakpointObserver) {
+		this.layout$ = breakpointsObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
+			map(({ matches }) => {
+				return {
+					isSmall: matches,
+				};
+			})
+		);
+	}
 }

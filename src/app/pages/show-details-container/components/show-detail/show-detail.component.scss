@@ -21,8 +21,16 @@
 	object-fit: cover;
 }
 
-.show-info {
+.show-info-small {
 	padding: 25px 25px;
+}
+
+.show-info-large {
+	display: flex;
+	flex-flow: row nowrap;
+	margin: 0px;
+	width: 100%;
+	padding: 35px;
 }
 
 .show-name,
@@ -31,20 +39,10 @@
 	margin: 0px;
 }
 
-@media only screen and (min-width: 800px) {
-	.show-info {
-		display: flex;
-		flex-flow: row nowrap;
-		margin: 0px;
-		width: 100%;
-		padding: 35px;
-	}
+.show-name-rating-large {
+	flex: 0 1 calc(50%);
+}
 
-	.show-name-rating {
-		flex: 0 1 calc(50%);
-	}
-
-	.show-description {
-		flex: 0 1 calc(50%);
-	}
+.show-description-large {
+	flex: 0 1 calc(50%);
 }

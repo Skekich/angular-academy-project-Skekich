@@ -2,10 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-interface ILayout {
-	isSmall: boolean;
-}
+import { ILayout } from 'src/app/interfaces/layout.interface';
 
 @Component({
 	selector: 'app-main-layout',
