@@ -1,5 +1,5 @@
 import { IReview } from '../interfaces/review.interface';
-import { IUser } from '../interfaces/user.interface';
+import { User } from './user.model';
 
 export class Review {
 	constructor(reviewData: IReview) {
@@ -14,5 +14,5 @@ export class Review {
 	public showId: string;
 	public rating: number;
 	public comment: string;
-	public user: IUser;
+	public user: User;
 }
