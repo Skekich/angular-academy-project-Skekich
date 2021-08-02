@@ -21,7 +21,7 @@ export class SidenavComponent {
 			title: 'Top rated',
 		},
 		{
-			url: '#',
+			url: '/my-profile',
 			title: 'My profile',
 		},
 	];

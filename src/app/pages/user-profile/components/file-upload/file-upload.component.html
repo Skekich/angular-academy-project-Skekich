@@ -1,0 +1,9 @@
+<div class="drop-box">
+	<label appDrag class="dropzone" (files)="filesDropped($event)">
+		<input type="file" #fileInput multiple accept="image/*" (change)="addFiles(fileInput.files)" />
+	</label>
+	<div *ngFor="let file of filesForUpload">
+		<img *ngIf="file" [src]="file.url" width="auto" height="auto" />
+	</div>
+</div>
+<!--droped image preview-->

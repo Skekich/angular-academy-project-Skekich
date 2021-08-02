@@ -40,6 +40,10 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 import { LogoComponent } from './components/logo/logo.component';
 import { StarsComponent } from './components/stars/stars.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { FileUploadComponent } from './pages/user-profile/components/file-upload/file-upload.component';
+import { DragDirective } from './directives/dragDrop.directive';
+import { ShowUserComponent } from './pages/user-profile/components/show-user/show-user.component';
 
 @NgModule({
 	declarations: [
@@ -67,6 +71,10 @@ import { LayoutModule } from '@angular/cdk/layout';
 		StarRatingComponent,
 		LogoComponent,
 		StarsComponent,
+		UserProfileComponent,
+		FileUploadComponent,
+		DragDirective,
+  ShowUserComponent,
 	],
 	imports: [
 		AppRoutingModule,

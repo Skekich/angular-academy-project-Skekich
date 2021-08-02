@@ -1,0 +1,14 @@
+<ng-contaner *ngIf="user$ | async as user">
+	<article class="my-profile">
+		<div class="user">
+			<p>email</p>
+			<p>{{ user.email }}</p>
+		</div>
+		<ng-container *ngIf="!user.image_url; else fileUpload">
+			<app-show-user [userImage]="user.image_url"></app-show-user>
+		</ng-container>
+	</article>
+</ng-contaner>
+<ng-template #fileUpload>
+	<app-file-upload></app-file-upload>
+</ng-template>
