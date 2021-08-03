@@ -1,18 +1,37 @@
 <ng-container *ngIf="layout$ | async as layout">
-	<article class="review">
-		<mat-card [class]="layout.isSmall ? 'show-review show-review-small' : 'show-review show-review-large'">
-			<article [class]="layout.isSmall ? 'user-info user-info-small' : 'user-info user-info-large'">
-				<div *ngIf="!imageUrl; else userImage" class="user-image">
-					<mat-icon class="image">person</mat-icon>
-				</div>
-				<div class="show-rating">
-					<p>{{ email }}</p>
-					<app-stars [rating]="rating"></app-stars>
-				</div>
-			</article>
-			<app-comment [class]="layout.isSmall ? 'comment-small' : 'comment-large'" [comment]="comment"></app-comment>
-		</mat-card>
-	</article>
+	<div class="wrapper">
+		<article [class]="layout.isSmall ? 'review review-small' : 'review review-large'">
+			<mat-card [class]="layout.isSmall ? 'show-review show-review-small' : 'show-review show-review-large'">
+				<article [class]="layout.isSmall ? 'user-info user-info-small' : 'user-info user-info-large'">
+					<div *ngIf="!imageUrl; else userImage" class="user-image">
+						<mat-icon class="image">person</mat-icon>
+					</div>
+					<div class="show-rating">
+						<p>{{ email }}</p>
+						<app-stars [rating]="rating"></app-stars>
+					</div>
+				</article>
+				<app-comment [class]="layout.isSmall ? 'comment-small' : 'comment-large'" [comment]="comment"></app-comment>
+			</mat-card>
+			<button class="menu" mat-icon-button [matMenuTriggerFor]="menu">
+				<mat-icon>more_vert</mat-icon>
+			</button>
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item>
+					<mat-icon>dialpad</mat-icon>
+					<span>Redial</span>
+				</button>
+				<button mat-menu-item disabled>
+					<mat-icon>voicemail</mat-icon>
+					<span>Check voice mail</span>
+				</button>
+				<button mat-menu-item>
+					<mat-icon>notifications_off</mat-icon>
+					<span>Disable alerts</span>
+				</button>
+			</mat-menu>
+		</article>
+	</div>
 </ng-container>
 
 <ng-template #userImage>

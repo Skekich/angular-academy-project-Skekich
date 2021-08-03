@@ -1,14 +1,16 @@
 <article class="layout">
-	<app-user-image [userImage]="userImage"></app-user-image>
-	<label class="label" for="file-input" aria-label="Upload image">UPLOAD IMAGE</label>
-	<input
-		id="file-input"
-		type="file"
-		#fileInput
-		class="file-input"
-		multiple
-		accept="image/*"
-		name="file-input"
-		(change)="addFiles(fileInput.files)"
-	/>
+	<app-user-image class="image" [userImage]="userImage"></app-user-image>
+	<div class="input">
+		<label class="label" for="file-input" aria-label="Upload image">UPLOAD IMAGE</label>
+		<input
+			id="file-input"
+			type="file"
+			#fileInput
+			class="file-input"
+			multiple
+			accept="image/*"
+			name="file-input"
+			(change)="addFiles(fileInput.files)"
+		/>
+	</div>
 </article>

@@ -45,6 +45,7 @@ import { FileUploadComponent } from './pages/user-profile/components/file-upload
 import { DragDirective } from './directives/dragDrop.directive';
 import { ShowUserComponent } from './pages/user-profile/components/show-user/show-user.component';
 import { UserImageComponent } from './components/user-image/user-image.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
 	declarations: [
@@ -95,6 +96,7 @@ import { UserImageComponent } from './components/user-image/user-image.component
 		NgbModule,
 		ReactiveFormsModule,
 		LayoutModule,
+		MatMenuModule,
 	],
 	providers: [
 		{

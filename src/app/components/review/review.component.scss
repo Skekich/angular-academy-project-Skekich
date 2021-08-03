@@ -7,15 +7,36 @@
 
 .review {
 	margin: 16px 0px;
-	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	background-color: colors.$purple;
+	border-radius: 24px;
+	overflow: hidden;
+}
+
+.review-small {
+	align-items: flex-start;
+
+	.menu {
+		margin: 15px 20px;
+	}
+}
+
+.review-large {
+	margin-left: 120px;
+	align-items: center;
+
+	.menu {
+		margin-right: 20px;
+	}
 }
 
 .show-review {
 	display: flex;
 	justify-content: flex-start;
-	background-color: colors.$purple;
-	border-radius: 24px;
+	box-shadow: none;
 	padding: 0px;
+	width: 100%;
 }
 
 .show-review-small {
@@ -24,7 +45,6 @@
 
 .show-review-large {
 	flex-flow: row nowrap;
-	margin-left: 120px;
 }
 
 .user-info {
