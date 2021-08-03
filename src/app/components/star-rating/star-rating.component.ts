@@ -30,7 +30,6 @@ export class StarRatingComponent {
 
 	public selectStar(value: number): void {
 		this.starSelected = value;
-		console.log(value);
 		this.currentRating.emit(value);
 	}
 

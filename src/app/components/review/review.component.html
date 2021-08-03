@@ -13,23 +13,17 @@
 				</article>
 				<app-comment [class]="layout.isSmall ? 'comment-small' : 'comment-large'" [comment]="comment"></app-comment>
 			</mat-card>
-			<button class="menu" mat-icon-button [matMenuTriggerFor]="menu">
-				<mat-icon>more_vert</mat-icon>
-			</button>
-			<mat-menu #menu="matMenu">
-				<button mat-menu-item>
-					<mat-icon>dialpad</mat-icon>
-					<span>Redial</span>
+			<ng-container *ngIf="currentUserId$ | async as user">
+				<button *ngIf="user === userId" class="menu" mat-icon-button [matMenuTriggerFor]="menu">
+					<mat-icon>more_vert</mat-icon>
 				</button>
-				<button mat-menu-item disabled>
-					<mat-icon>voicemail</mat-icon>
-					<span>Check voice mail</span>
-				</button>
-				<button mat-menu-item>
-					<mat-icon>notifications_off</mat-icon>
-					<span>Disable alerts</span>
-				</button>
-			</mat-menu>
+				<mat-menu #menu="matMenu">
+					<button mat-menu-item (click)="onDeleteReview($event)">
+						<mat-icon>delete</mat-icon>
+						<span>DELETE</span>
+					</button>
+				</mat-menu>
+			</ng-container>
 		</article>
 	</div>
 </ng-container>

@@ -31,4 +31,10 @@ export class ReviewService {
 			})
 		);
 	}
+
+	public deleteReview(id: string | null): Observable<HttpResponse<Review>> {
+		return this.http.delete<Review>('https://tv-shows.infinum.academy/reviews/' + id, {
+			observe: 'response',
+		});
+	}
 }
