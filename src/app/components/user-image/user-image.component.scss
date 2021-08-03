@@ -1,0 +1,17 @@
+.user-image {
+	overflow: hidden;
+}
+
+.image-large {
+	width: 260px;
+	height: 260px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.image-small {
+	width: 173px;
+	height: 173px;
+	border-radius: 50%;
+	object-fit: cover;
+}

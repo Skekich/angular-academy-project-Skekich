@@ -1,5 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ILayout } from 'src/app/interfaces/layout.interface';
 import { IUploadFile } from 'src/app/interfaces/uploadFile.interface';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,9 +14,23 @@ import { UserService } from 'src/app/services/user.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FileUploadComponent {
+	@Output() isUploaded: EventEmitter<boolean> = new EventEmitter();
 	public filesForUpload: Array<IUploadFile> = new Array();
+	public layout$: Observable<ILayout>;
 
-	constructor(private sanitizer: DomSanitizer, private userService: UserService) {}
+	constructor(
+		private sanitizer: DomSanitizer,
+		private userService: UserService,
+		breakpointsObserver: BreakpointObserver
+	) {
+		this.layout$ = breakpointsObserver.observe([Breakpoints.XSmall, Breakpoints.Small]).pipe(
+			map(({ matches }) => {
+				return {
+					isSmall: matches,
+				};
+			})
+		);
+	}
 
 	addFiles(files: FileList | null): void {
 		if (files) {
@@ -23,7 +41,9 @@ export class FileUploadComponent {
 			}
 		}
 
-		this.userService.uploadImage(this.filesForUpload[0].file).subscribe();
+		this.userService.uploadImage(this.filesForUpload[0].file).subscribe(() => {
+			this.isUploaded.emit(true);
+		});
 	}
 
 	filesDropped(dragEvent: DragEvent): void {

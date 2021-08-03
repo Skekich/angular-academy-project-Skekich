@@ -1,24 +1,27 @@
-p {
-	font-family: Lato;
-}
+@use 'utils/colors';
+
 .dropzone {
-	min-height: 400px;
-	min-width: 400px;
+	border-radius: 24px;
 	display: table;
-	width: 100%;
-	background-color: #eee;
-	border: dotted 1px #aaa;
 	cursor: pointer;
 }
 
-.text-wrapper {
-	display: table-cell;
-	vertical-align: middle;
+.dropzone-small {
+	width: 270px;
+	height: 270px;
+
+	background-image: url('/assets/Images/background-small.svg');
 }
 
-.centered {
-	font-family: sans-serif;
-	font-size: 1.3em;
-	font-weight: bold;
-	text-align: center;
+.dropzone-large {
+	width: 600px;
+	height: 400px;
+
+	background-image: url('/assets/Images/background-large.svg');
+}
+
+.file-input {
+	opacity: 0px;
+	width: 0px;
+	height: 0px;
 }

@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { merge, Observable, Subject } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { User } from 'src/app/services/user.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,11 +12,20 @@ import { UserService } from 'src/app/services/user.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserProfileComponent {
-	constructor(private userService: UserService) {}
+	private trigger$: Subject<boolean> = new Subject();
+	constructor(private userService: UserService, private route: ActivatedRoute) {}
 
-	public user$: Observable<User> = this.userService.getUser().pipe(
-		map((user) => {
-			return user;
+	public user$: Observable<User> = merge(this.route.paramMap, this.trigger$).pipe(
+		switchMap(() => {
+			return this.userService.getUser().pipe(
+				map((user) => {
+					return user;
+				})
+			);
 		})
 	);
+
+	public onUpload(value: boolean) {
+		this.trigger$.next(value);
+	}
 }

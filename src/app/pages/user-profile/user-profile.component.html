@@ -4,11 +4,11 @@
 			<p>email</p>
 			<p>{{ user.email }}</p>
 		</div>
-		<ng-container *ngIf="!user.image_url; else fileUpload">
+		<ng-container *ngIf="user.image_url; else fileUpload">
 			<app-show-user [userImage]="user.image_url"></app-show-user>
 		</ng-container>
 	</article>
 </ng-contaner>
 <ng-template #fileUpload>
-	<app-file-upload></app-file-upload>
+	<app-file-upload (isUploaded)="onUpload($event)"></app-file-upload>
 </ng-template>

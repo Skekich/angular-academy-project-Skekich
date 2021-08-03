@@ -44,6 +44,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { FileUploadComponent } from './pages/user-profile/components/file-upload/file-upload.component';
 import { DragDirective } from './directives/dragDrop.directive';
 import { ShowUserComponent } from './pages/user-profile/components/show-user/show-user.component';
+import { UserImageComponent } from './components/user-image/user-image.component';
 
 @NgModule({
 	declarations: [
@@ -75,6 +76,7 @@ import { ShowUserComponent } from './pages/user-profile/components/show-user/sho
 		FileUploadComponent,
 		DragDirective,
   ShowUserComponent,
+  UserImageComponent,
 	],
 	imports: [
 		AppRoutingModule,
