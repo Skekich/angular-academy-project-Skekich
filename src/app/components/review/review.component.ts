@@ -45,7 +45,8 @@ export class ReviewComponent {
 	);
 
 	public onDeleteReview(event: Event): void {
-		this.reviewService.deleteReview(this.reviewId).subscribe();
-		this.sharedService.nextMessage(true);
+		this.reviewService.deleteReview(this.reviewId).subscribe(() => {
+			this.sharedService.nextMessage(true);
+		});
 	}
 }

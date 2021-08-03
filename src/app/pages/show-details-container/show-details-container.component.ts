@@ -22,7 +22,6 @@ export class ShowDetailsContainerComponent {
 		private sharedService: SharedService
 	) {
 		this.sharedService.sharedMessage.subscribe((msg) => {
-			console.log(msg);
 			this.currentReview$.next(msg);
 		});
 	}
