@@ -1,6 +1,7 @@
 <ng-container *ngIf="layout$ | async as layout">
-	<div>
+	<div class="layout">
 		<label
+			for="file-input"
 			[class]="layout.isSmall ? 'dropzone dropzone-small' : 'dropzone dropzone-large'"
 			appDrag
 			(files)="filesDropped($event)"
@@ -31,9 +32,21 @@
 					fill="#8D5CE6"
 				/>
 			</svg>
-			Click me!
-			<input type="file" #fileInput class="file-input" multiple accept="image/*" (change)="addFiles(fileInput.files)" />
+			<p>
+				Drop your <br />
+				photo here
+			</p>
 		</label>
+		<input
+			id="file-input"
+			type="file"
+			#fileInput
+			class="file-input"
+			multiple
+			accept="image/*"
+			name="file-input"
+			(change)="addFiles(fileInput.files)"
+		/>
 	</div>
 </ng-container>
 <ng-template #showImage>

@@ -22,7 +22,6 @@ export class UserService {
 	public uploadImage(file: File): Observable<HttpResponse<User>> {
 		const payload = new FormData();
 		payload.append('image', file);
-
 		return this.http.put<HttpResponse<User>>('https://tv-shows.infinum.academy/users', payload);
 	}
 }

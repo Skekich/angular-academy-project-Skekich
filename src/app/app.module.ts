@@ -75,8 +75,8 @@ import { UserImageComponent } from './components/user-image/user-image.component
 		UserProfileComponent,
 		FileUploadComponent,
 		DragDirective,
-  ShowUserComponent,
-  UserImageComponent,
+		ShowUserComponent,
+		UserImageComponent,
 	],
 	imports: [
 		AppRoutingModule,

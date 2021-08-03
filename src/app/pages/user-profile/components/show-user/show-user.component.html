@@ -1,1 +1,14 @@
-<app-user-image [userImage]="userImage"></app-user-image>
+<article class="layout">
+	<app-user-image [userImage]="userImage"></app-user-image>
+	<label class="label" for="file-input" aria-label="Upload image">UPLOAD IMAGE</label>
+	<input
+		id="file-input"
+		type="file"
+		#fileInput
+		class="file-input"
+		multiple
+		accept="image/*"
+		name="file-input"
+		(change)="addFiles(fileInput.files)"
+	/>
+</article>
