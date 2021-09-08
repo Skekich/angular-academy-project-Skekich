@@ -1,0 +1,15 @@
+.user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column wrap;
+	margin-bottom: 40px;
+}
+
+.user-small {
+	margin-top: 100px;
+}
+
+.user-large {
+	margin-top: 170px;
+}

@@ -1,19 +1,18 @@
-<ng-container *ngIf="show">
-	<mat-card class="show-card">
-		<article>
-			<img [src]="show.imageUrl" alt="show image" />
-			<div class="show-information">
-				<h2>{{ show.title }}</h2>
-				<p class="show-rating">
-					Average Rating:
-					<span>
+<ng-containe *ngIf="layout$ | async as layout">
+	<ng-container *ngIf="show">
+		<mat-card class="show-card">
+			<img class="show-image" [src]="show.imageUrl" alt="show image" />
+			<div [class]="layout.isSmall ? 'show-info-small' : 'show-info-large'">
+				<div [class]="layout.isSmall ? 'show-name-rating' : 'show-name-rating-large'">
+					<h2 class="show-name">{{ show.title }}</h2>
+					<p class="show-rating">
 						<app-rating [rating]="show.averageRating"></app-rating>
-					</span>
-				</p>
+					</p>
+				</div>
+				<article [class]="layout.isSmall ? 'show-description' : 'show-description-large'">
+					<p>{{ show.description }}</p>
+				</article>
 			</div>
-		</article>
-		<article class="show-description">
-			<p>{{ show.description }}</p>
-		</article>
-	</mat-card>
-</ng-container>
+		</mat-card>
+	</ng-container>
+</ng-containe>

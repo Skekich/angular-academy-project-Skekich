@@ -37,6 +37,15 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { WriteReviewComponent } from './pages/show-details-container/components/write-review/write-review.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { LogoComponent } from './components/logo/logo.component';
+import { StarsComponent } from './components/stars/stars.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { FileUploadComponent } from './pages/user-profile/components/file-upload/file-upload.component';
+import { DragDirective } from './directives/dragDrop.directive';
+import { ShowUserComponent } from './pages/user-profile/components/show-user/show-user.component';
+import { UserImageComponent } from './components/user-image/user-image.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
 	declarations: [
@@ -62,6 +71,13 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 		UserRegistrationContainerComponent,
 		WriteReviewComponent,
 		StarRatingComponent,
+		LogoComponent,
+		StarsComponent,
+		UserProfileComponent,
+		FileUploadComponent,
+		DragDirective,
+		ShowUserComponent,
+		UserImageComponent,
 	],
 	imports: [
 		AppRoutingModule,
@@ -79,6 +95,8 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 		MatSnackBarModule,
 		NgbModule,
 		ReactiveFormsModule,
+		LayoutModule,
+		MatMenuModule,
 	],
 	providers: [
 		{

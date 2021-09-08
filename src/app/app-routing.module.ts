@@ -7,6 +7,7 @@ import { AllShowsContainerComponent } from './pages/all-shows-container/all-show
 import { ShowDetailsContainerComponent } from './pages/show-details-container/show-details-container.component';
 import { TopRatedShowsComponent } from './pages/top-rated-shows/top-rated-shows.component';
 import { UserLoginContainerComponent } from './pages/user-login-container/user-login-container.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UserRegistrationContainerComponent } from './pages/user-registration-container/user-registration-container.component';
 
 const routes: Routes = [
@@ -27,6 +28,11 @@ const routes: Routes = [
 			{
 				path: 'show/:id',
 				component: ShowDetailsContainerComponent,
+				canActivate: [AppGuard],
+			},
+			{
+				path: 'my-profile',
+				component: UserProfileComponent,
 				canActivate: [AppGuard],
 			},
 		],

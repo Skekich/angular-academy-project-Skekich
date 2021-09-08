@@ -2,7 +2,6 @@ import { Component, ChangeDetectionStrategy, EventEmitter, Output } from '@angul
 
 interface IStar {
 	id: number;
-	icon: string;
 	class: string;
 }
 
@@ -17,27 +16,36 @@ export class StarRatingComponent {
 	private starCount: number = 5;
 	public stars: Array<IStar> = new Array<IStar>();
 
+	private starSelected: number = 0;
+	private tempStarSelected: number = 0;
+
 	constructor() {
-		for (let i = 0; i < this.starCount; i++) {
+		for (let i = 1; i <= this.starCount; i++) {
 			this.stars.push({
 				id: i,
-				icon: 'star',
-				class: 'star-gray star-hover star',
+				class: 'star',
 			});
 		}
 	}
 
 	public selectStar(value: number): void {
-		this.stars.forEach((star) => {
-			if (star.id <= value) {
-				star.class = 'star-gold star';
-			} else {
-				star.class = 'star-gray star';
-			}
+		this.starSelected = value;
+		this.currentRating.emit(value);
+	}
 
-			return star;
-		});
+	public onMouseEnter(value: number): void {
+		this.tempStarSelected = value;
+	}
 
-		this.currentRating.emit(value + 1);
+	public onMouseLeave(): void {
+		this.tempStarSelected = this.starSelected;
+	}
+
+	public showStars(value: number): string {
+		if (value <= this.tempStarSelected) {
+			return 'star';
+		} else {
+			return 'star_border';
+		}
 	}
 }

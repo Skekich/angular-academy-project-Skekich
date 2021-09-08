@@ -1,0 +1,18 @@
+<ng-contaner *ngIf="user$ | async as user">
+	<div *ngIf="layout$ | async as layout" class="profile">
+		<div [class]="layout.isSmall ? 'user user-small' : 'user user-large'">
+			<div>
+				<p>EMAIL</p>
+			</div>
+			<div>
+				<p>{{ user.email }}</p>
+			</div>
+		</div>
+		<ng-container *ngIf="user.image_url; else fileUpload">
+			<app-show-user class="image" [userImage]="user.image_url" (isUploaded)="onUpload($event)"></app-show-user>
+		</ng-container>
+	</div>
+</ng-contaner>
+<ng-template #fileUpload>
+	<app-file-upload class="image" (isUploaded)="onUpload($event)"></app-file-upload>
+</ng-template>

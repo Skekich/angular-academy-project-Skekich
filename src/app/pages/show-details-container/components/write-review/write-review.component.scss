@@ -1,43 +1,95 @@
+@use 'utils/colors';
+
 :host {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	width: 100%;
 }
 
-mat-card {
-	width: 50%;
+.review {
+	width: 143px;
+	height: 28px;
 }
 
-form {
+.rating-card {
 	display: flex;
-	flex-flow: column wrap;
+	justify-content: flex-start;
+	background-color: colors.$dark-purple;
 }
 
-ngb-rating {
-	.star {
-		font-size: 1.5rem;
-		color: #b0c4de;
-	}
-	.filled {
-		color: #1e90ff;
-	}
-	margin-bottom: 16px;
+.rating-card-small {
+	padding: 0px;
+	margin: 40px 0px;
+	width: 100%;
+
+	flex-flow: column nowrap;
 }
 
-.on-submit-button {
-	display: flex;
+.rating-card-large {
 	flex-flow: row nowrap;
-	justify-content: flex-end;
+	margin-top: 86px;
+	margin-bottom: 60px;
+
+	form {
+		width: 100%;
+	}
+}
+
+.comment {
+	width: 100%;
+}
+
+.comment-small {
+	height: 52px;
+}
+
+.comment-large {
+	height: 80px;
+}
+
+.comment-input {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	border-radius: 24px;
+	background-color: colors.$white;
+	color: colors.$black;
+	border: none;
+}
+
+.comment-input-small {
+	padding: 18px 28px;
+}
+
+.comment-input-large {
+	padding: 28px 40px;
+}
+
+::placeholder {
+	color: colors.$light-purple;
+}
+
+.rating-post {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-flow: row nowrap;
+	margin-top: 23px;
 }
 
 .rating {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-start;
+
+	span {
+		margin-right: 9px;
+	}
+}
+
+.rating-large {
+	margin-left: 42px;
 }
 
 .has-error {
-	font-size: 10px;
-	color: red;
+	font-size: 14px;
+	color: colors.$error;
 }

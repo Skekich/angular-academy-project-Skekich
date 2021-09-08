@@ -1,33 +1,48 @@
-<mat-card>
-	<h3>Write a review</h3>
-	<form [formGroup]="writeRatingFormGroup">
-		<div class="rating">
-			<span>Rating: </span>
-			<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
-		</div>
-		<div
-			class="has-error"
-			*ngIf="writeRatingFormGroup.controls.rating.hasError('required') && writeRatingFormGroup.touched"
-		>
-			Rating required
-		</div>
+<ng-container *ngIf="layout$ | async as layout">
+	<article [class]="layout.isSmall ? 'rating-card rating-card-small' : 'rating-card rating-card-large'">
+		<p class="review">Reviews</p>
+		<form [formGroup]="writeRatingFormGroup">
+			<div [class]="layout.isSmall ? 'comment comment-small' : 'comment comment-large'">
+				<input
+					[class]="layout.isSmall ? 'comment-input comment-input-small' : 'comment-input comment-input-large'"
+					id="comment"
+					type="text"
+					name="comment"
+					placeholder="Enter review"
+					formControlName="comment"
+				/>
+			</div>
 
-		<mat-form-field appearance="fill">
-			<mat-label>Review</mat-label>
-			<textarea
-				matInput
-				type="textarea"
-				formControlName="comment"
-				placeholder="Enter review"
-				#autosize="cdkTextareaAutosize"
-				cdkTextareaAutosize
-				cdkAutosizeMinRows="1"
-				cdkAutosizeMaxRows="5"
-			></textarea>
-			<mat-error *ngIf="writeRatingFormGroup.controls.comment.hasError('required')">Comment is required</mat-error>
-		</mat-form-field>
-	</form>
-	<div class="on-submit-button">
-		<button mat-raised-button (click)="onSubmit()" [disabled]="writeRatingFormGroup.invalid">Submit</button>
-	</div>
-</mat-card>
+			<article class="rating-post">
+				<div [class]="layout.isSmall ? 'rating' : 'rating rating-large'">
+					<span>Rating</span>
+					<app-star-rating (currentRating)="writeRatingFormGroup.get('rating')?.setValue($event)"></app-star-rating>
+				</div>
+
+				<div class="on-submit-button">
+					<button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="writeRatingFormGroup.invalid">
+						Submit
+					</button>
+				</div>
+			</article>
+			<div class="has-error">
+				<div
+					*ngIf="
+						writeRatingFormGroup.controls.comment.hasError('required') && writeRatingFormGroup.controls.comment.touched
+					"
+				>
+					Comment required
+				</div>
+				<div
+					*ngIf="
+						writeRatingFormGroup.controls.rating.hasError('required') &&
+						writeRatingFormGroup.controls.rating.untouched &&
+						writeRatingFormGroup.touched
+					"
+				>
+					Rating required
+				</div>
+			</div>
+		</form>
+	</article>
+</ng-container>

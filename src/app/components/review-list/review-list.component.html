@@ -1,3 +1,11 @@
 <ng-container *ngFor="let review of reviews">
-	<app-review [rating]="review.rating" [comment]="review.comment"> </app-review>
+	<app-review
+		[rating]="review.rating"
+		[comment]="review.comment"
+		[email]="review.user.email"
+		[imageUrl]="review.user.image_url"
+		[userId]="review.user.id"
+		[reviewId]="review.id"
+	>
+	</app-review>
 </ng-container>

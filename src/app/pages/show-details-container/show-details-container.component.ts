@@ -5,6 +5,7 @@ import { map, switchMap, tap } from 'rxjs/operators';
 import { IPostReview } from 'src/app/interfaces/postReview.interface';
 import { ITemplateDetailsData } from 'src/app/interfaces/templateDetailsData.interface';
 import { ReviewService } from 'src/app/services/review.service';
+import { SharedService } from 'src/app/services/shared.service';
 import { ShowService } from 'src/app/services/show.service';
 
 @Component({
@@ -14,7 +15,16 @@ import { ShowService } from 'src/app/services/show.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowDetailsContainerComponent {
-	constructor(private route: ActivatedRoute, private showService: ShowService, private reviewService: ReviewService) {}
+	constructor(
+		private route: ActivatedRoute,
+		private showService: ShowService,
+		private reviewService: ReviewService,
+		private sharedService: SharedService
+	) {
+		this.sharedService.sharedMessage.subscribe((msg) => {
+			this.currentReview$.next(msg);
+		});
+	}
 
 	public currentReview$: Subject<boolean> = new Subject<boolean>();
 	public currentShowId: string;
@@ -43,7 +53,7 @@ export class ShowDetailsContainerComponent {
 		})
 	);
 
-	onReviewSubmit(data: IPostReview): void {
+	public onReviewSubmit(data: IPostReview): void {
 		this.reviewService
 			.addReview({
 				rating: data.rating,

@@ -1,20 +1,49 @@
-.app-sidenav {
-	display: flex;
-	justify-content: center;
-	width: 150px;
+@use 'utils/colors';
+
+:host {
 	height: 100%;
 }
 
-ul {
+.app-sidenav {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: column nowrap;
+	height: calc(100% - 90px);
+}
+
+.list {
 	list-style: none;
-	margin: 0;
-	padding: 10px 0 10px 0;
+	padding: 0px;
+	margin: 50px 130px 0px 31px;
+	height: 100%;
 }
 
-a {
-	border-radius: 32px;
+.list-link {
+	border-radius: 30px;
+	padding: 8px 13px;
+	margin-bottom: 19px;
+	text-decoration: none;
+	color: colors.$white;
+	font-family: Roboto;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 28px;
+	text-align: center;
+
+	&.active {
+		background-color: colors.$purple;
+	}
 }
 
-.active {
-	background-color: burlywood;
+.log-out {
+	border-radius: 30px;
+	width: 68px;
+	padding: 0px;
+	margin-left: 50px;
+	font-family: Roboto;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 20px;
+	line-height: 16px;
 }

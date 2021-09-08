@@ -1,0 +1,5 @@
+<ng-container *ngIf="layout$ | async as layout">
+	<article class="user-image">
+		<img [class]="layout.isSmall ? 'image-small' : 'image-large'" src="{{ userImage }}" alt="No image!" />
+	</article>
+</ng-container>

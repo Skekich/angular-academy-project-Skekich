@@ -1,28 +1,36 @@
-:host {
-	display: inline-flex;
-}
+@use 'utils/colors';
 
-article {
-	margin: 0px 10px;
+:host {
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
 .show-card {
-	padding: 0;
-	margin: 16px;
+	display: flex;
+	flex-flow: column nowrap;
+	height: 100%;
+	padding: 0px;
 	border-radius: 24px;
 	overflow: hidden;
-	width: 240px;
+	background-color: colors.$white;
 }
 
-img {
-	width: 240px;
+.image {
+	width: 100%;
 	height: 300px;
 	object-fit: cover;
 }
 
-.show-rating {
+.info {
+	flex: 1;
 	display: flex;
-	justify-content: flex-start;
-	align-items: baseline;
-	flex-flow: row nowrap;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	padding: 18px 18px 13px;
+	color: colors.$purple;
+
+	.info-items {
+		margin: 0px;
+	}
 }

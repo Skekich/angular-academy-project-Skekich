@@ -1,13 +1,7 @@
 <mat-card class="show-card" clickable>
-	<img [src]="imgUrl" alt="show image" />
-	<article>
-		<h2>{{ title }}</h2>
-		<p>{{ description }}</p>
-		<p class="show-rating">
-			Average Rating:
-			<span>
-				<app-rating [rating]="rating"></app-rating>
-			</span>
-		</p>
+	<img class="image" [src]="imgUrl" alt="show image" />
+	<article class="info">
+		<h2 class="info-items">{{ title }}</h2>
+		<app-rating [rating]="rating"></app-rating>
 	</article>
 </mat-card>
